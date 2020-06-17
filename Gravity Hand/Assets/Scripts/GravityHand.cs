@@ -4,11 +4,15 @@ using UnityEngine;
 
 public class GravityHand : MonoBehaviour
 {
+    public PlayerController playerControl;
+
     public Camera cam;
-    public float interactDist;
+    public float gravDist;
+    public float grappleDist;
 
     public Transform holdPos;
     public float attractSpeed;
+    public float grappleSpeed;
 
     public float minThrowForce;
     public float maxThrowForce;
@@ -18,45 +22,53 @@ public class GravityHand : MonoBehaviour
     private Rigidbody objectRb;
 
     private Vector3 rotateVector = Vector3.one;
+    private Vector3 grappleLocation;
 
     private bool hasObject = false;
+    private bool canGrapple = false;
 
 
     void Start()
     {
-        throwForce = minThrowForce; 
+        throwForce = minThrowForce;
     }
 
     void Update()
     {
-        if(Input.GetMouseButtonDown(0) && !hasObject)
+        if (Input.GetMouseButtonDown(0) && !hasObject)
         {
             RaycastInfo();
         }
 
-        if(Input.GetMouseButton(1) && hasObject)
+        if (Input.GetMouseButton(1) && hasObject)
         {
             throwForce += 0.1f;
         }
 
-        if(Input.GetMouseButtonUp(1) && hasObject)
+        if (Input.GetMouseButtonUp(1) && hasObject)
         {
             ThrowObject();
         }
 
-        if(Input.GetKeyDown(KeyCode.G) && hasObject)
+        if (Input.GetKeyDown(KeyCode.G) && hasObject)
         {
             DropObject();
         }
 
-        if(hasObject)
+        if (hasObject)
         {
             RotateObject();
-            if(CheckDist() >= 1f)
+            if (CheckDist() >= 1f)
             {
                 PullToPlayer();
             }
         }
+
+        if(canGrapple)
+        {
+            Grapple();
+        }
+
     }
 
 
@@ -106,12 +118,25 @@ public class GravityHand : MonoBehaviour
         DropObject();
     }
 
+    private void Grapple()
+    {
+        transform.position = Vector3.Lerp(transform.position, grappleLocation, grappleSpeed * Time.deltaTime);
+
+        float travelDist = Vector3.Distance(transform.position, grappleLocation);
+
+        if(travelDist <= 0.5f)
+        {
+            canGrapple = false;
+            playerControl.enabled = true;
+        }
+    }
+
     private void RaycastInfo()
     {
         Ray ray = cam.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
 
-        if(Physics.Raycast(ray, out hit, interactDist))
+        if(Physics.Raycast(ray, out hit, gravDist))
         {
             if(hit.collider.CompareTag("GravInteract"))
             {
@@ -124,6 +149,16 @@ public class GravityHand : MonoBehaviour
                 hasObject = true;
 
                 CalculateRotVector();
+            }
+        }
+
+        if(Physics.Raycast(ray, out hit, grappleDist))
+        {
+            if (hit.collider.CompareTag("GrapplePoint"))
+            {
+                grappleLocation = hit.point;
+                canGrapple = true;
+                playerControl.enabled = false;
             }
         }
     }
