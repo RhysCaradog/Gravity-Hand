@@ -7,8 +7,8 @@ public class GravityHand : MonoBehaviour
     public PlayerController playerControl;
 
     public Camera cam;
-    public float gravDist;
-    public float grappleDist;
+    public float grabDist;
+    public float pushRadius;
 
     public Transform holdPos;
     public float attractSpeed;
@@ -17,6 +17,8 @@ public class GravityHand : MonoBehaviour
     public float minThrowForce;
     public float maxThrowForce;
     float throwForce;
+
+    public float pushForce;
 
     private GameObject currentObject;
     private Rigidbody objectRb;
@@ -31,16 +33,18 @@ public class GravityHand : MonoBehaviour
     void Start()
     {
         throwForce = minThrowForce;
+        
     }
 
     void Update()
     {
+
         if (Input.GetMouseButtonDown(0) && !hasObject)
         {
             RaycastInfo();
         }
 
-        if (Input.GetMouseButton(1) && hasObject)
+        if (Input.GetMouseButton(1))
         {
             throwForce += 0.1f;
         }
@@ -48,6 +52,10 @@ public class GravityHand : MonoBehaviour
         if (Input.GetMouseButtonUp(1) && hasObject)
         {
             ThrowObject();
+        }
+        else if(Input.GetMouseButtonUp(1) && !hasObject)
+        {
+            PushObject();
         }
 
         if (Input.GetKeyDown(KeyCode.G) && hasObject)
@@ -118,6 +126,23 @@ public class GravityHand : MonoBehaviour
         DropObject();
     }
 
+    private void PushObject()
+    {
+        Collider[] colliders = Physics.OverlapSphere(transform.position, pushRadius);
+
+        foreach (Collider gravObject in colliders)
+        {
+            if(gravObject.CompareTag("GravInteract"))
+            {
+                Rigidbody gravBody = gravObject.GetComponent<Rigidbody>();
+
+                //gravBody.AddExplosionForce(pushForce, Vector3.up, pushRadius);
+                gravBody.AddForce(transform.forward * pushForce);
+            }
+        }
+
+    }
+
     private void Grapple()
     {
         transform.position = Vector3.Lerp(transform.position, grappleLocation, grappleSpeed * Time.deltaTime);
@@ -136,9 +161,11 @@ public class GravityHand : MonoBehaviour
         Ray ray = cam.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
 
-        if(Physics.Raycast(ray, out hit, gravDist))
+        if(Physics.Raycast(ray, out hit, grabDist))
         {
-            if(hit.collider.CompareTag("GravInteract"))
+            
+
+            if (hit.collider.CompareTag("GravInteract"))
             {
                 currentObject = hit.collider.gameObject;
                 currentObject.transform.SetParent(holdPos);
@@ -150,10 +177,7 @@ public class GravityHand : MonoBehaviour
 
                 CalculateRotVector();
             }
-        }
 
-        if(Physics.Raycast(ray, out hit, grappleDist))
-        {
             if (hit.collider.CompareTag("GrapplePoint"))
             {
                 grappleLocation = hit.point;
@@ -161,6 +185,16 @@ public class GravityHand : MonoBehaviour
                 playerControl.enabled = false;
             }
         }
-    }
 
+
+        /*if(Physics.Raycast(ray, out hit, grappleDist))
+        {
+            if (hit.collider.CompareTag("GrapplePoint"))
+            {
+                grappleLocation = hit.point;
+                canGrapple = true;
+                playerControl.enabled = false;
+            }
+        }*/
+    }
 }
