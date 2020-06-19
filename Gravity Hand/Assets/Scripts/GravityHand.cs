@@ -69,6 +69,7 @@ public class GravityHand : MonoBehaviour
         if (hasObject)
         {
             anim.SetBool("Hold", true);
+            anim.ResetTrigger("Pull");
 
             RotateObject();
             if (CheckDist() >= 1f)
@@ -116,6 +117,8 @@ public class GravityHand : MonoBehaviour
     private void PullToPlayer()
     {
         currentObject.transform.position = Vector3.Lerp(currentObject.transform.position, holdPos.position, attractSpeed * Time.deltaTime);
+
+        anim.SetTrigger("Pull");
     }
 
     private void DropObject()
