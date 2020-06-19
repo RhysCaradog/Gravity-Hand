@@ -7,6 +7,8 @@ public class GravityHand : MonoBehaviour
     public PlayerController playerControl;
 
     public Camera cam;
+    public Animator anim;
+
     public float grabDist;
     public float pushRadius;
 
@@ -33,12 +35,12 @@ public class GravityHand : MonoBehaviour
     void Start()
     {
         throwForce = minThrowForce;
+        anim = GetComponentInChildren<Animator>();
         
     }
 
     void Update()
     {
-
         if (Input.GetMouseButtonDown(0) && !hasObject)
         {
             RaycastInfo();
@@ -65,18 +67,23 @@ public class GravityHand : MonoBehaviour
 
         if (hasObject)
         {
+            anim.SetBool("Hold", true);
+
             RotateObject();
             if (CheckDist() >= 1f)
             {
                 PullToPlayer();
             }
         }
+        else
+        {
+            anim.SetBool("Hold", false);
+        }
 
         if(canGrapple)
         {
             Grapple();
         }
-
     }
 
 

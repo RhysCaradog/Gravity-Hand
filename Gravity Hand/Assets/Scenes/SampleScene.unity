@@ -1034,7 +1034,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 4ac2fe9af7722de4ba665de0b474473c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -0.25
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 4ac2fe9af7722de4ba665de0b474473c, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1263,6 +1263,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerControl: {fileID: 809512759}
   cam: {fileID: 534669904}
+  anim: {fileID: 1873668957}
   grabDist: 50
   pushRadius: 20
   holdPos: {fileID: 1687432813}
@@ -2835,7 +2836,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1687432812}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.25, y: 0, z: 1}
+  m_LocalPosition: {x: -1, y: 0, z: 1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 534669905}
