@@ -84,7 +84,7 @@ public class GravityHand : MonoBehaviour
 
         if(canGrapple)
         {
-            anim.SetTrigger("Pull");
+            anim.SetBool("Grapple", true);
             Grapple();
         }
     }
@@ -169,7 +169,7 @@ public class GravityHand : MonoBehaviour
             canGrapple = false;
             playerControl.enabled = true;
 
-            anim.ResetTrigger("Pull");
+            anim.SetBool("Grapple", false);
         }       
     }
 
