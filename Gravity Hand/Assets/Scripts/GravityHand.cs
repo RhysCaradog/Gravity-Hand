@@ -36,7 +36,6 @@ public class GravityHand : MonoBehaviour
     {
         throwForce = minThrowForce;
         anim = GetComponentInChildren<Animator>();
-        
     }
 
     void Update()
@@ -130,6 +129,9 @@ public class GravityHand : MonoBehaviour
         throwForce = Mathf.Clamp(throwForce, minThrowForce, maxThrowForce);
         objectRb.AddForce(cam.transform.forward * throwForce, ForceMode.Impulse);
         throwForce = minThrowForce;
+
+        anim.SetTrigger("Throw");
+
         DropObject();
     }
 
@@ -156,7 +158,9 @@ public class GravityHand : MonoBehaviour
 
         float travelDist = Vector3.Distance(transform.position, grappleLocation);
 
-        if(travelDist <= 0.5f)
+        anim.SetTrigger("Pull");
+
+        if (travelDist <= 0.5f)
         {
             canGrapple = false;
             playerControl.enabled = true;
