@@ -46,7 +46,7 @@ public class GravityHand : MonoBehaviour
             RaycastInfo();
         }
 
-        if (Input.GetMouseButton(1))
+        if (Input.GetMouseButton(1)) //If button is held down increase throw force until it reaches maxThrowForce
         {
             throwForce += 0.1f;
         }
@@ -84,6 +84,7 @@ public class GravityHand : MonoBehaviour
 
         if(canGrapple)
         {
+            anim.SetTrigger("Pull");
             Grapple();
         }
     }
@@ -108,20 +109,20 @@ public class GravityHand : MonoBehaviour
 
     //-----------------Functional Stuff
 
-    public float CheckDist()
+    public float CheckDist() //Checks the distance between player & object
     {
         float dist = Vector3.Distance(currentObject.transform.position, holdPos.transform.position);
         return dist;
     }
 
-    private void PullToPlayer()
+    private void PullToPlayer() //lerps object to holdPos
     {
         currentObject.transform.position = Vector3.Lerp(currentObject.transform.position, holdPos.position, attractSpeed * Time.deltaTime);
 
         anim.SetTrigger("Pull");
     }
 
-    private void DropObject()
+    private void DropObject() //removes object from parent & it's rigidbody constraints 
     {
         objectRb.constraints = RigidbodyConstraints.None;
         currentObject.transform.parent = null;
@@ -129,7 +130,7 @@ public class GravityHand : MonoBehaviour
         hasObject = false;
     }
 
-    private void ThrowObject()
+    private void ThrowObject() //Throws object in forward vector & drops object
     {
         throwForce = Mathf.Clamp(throwForce, minThrowForce, maxThrowForce);
         objectRb.AddForce(cam.transform.forward * throwForce, ForceMode.Impulse);
@@ -140,7 +141,7 @@ public class GravityHand : MonoBehaviour
         DropObject();
     }
 
-    private void PushObject()
+    private void PushObject() //Applies force in a forward vector to any correctly tagged object in a radius
     {
         Collider[] colliders = Physics.OverlapSphere(transform.position, pushRadius);
 
@@ -157,7 +158,7 @@ public class GravityHand : MonoBehaviour
 
     }
 
-    private void Grapple()
+    private void Grapple() //Lerps player from their current transform.position to designated grapple location. Once close to grapple location lerp is disabled & player control is reactivated
     {
         transform.position = Vector3.Lerp(transform.position, grappleLocation, grappleSpeed * Time.deltaTime);
 
@@ -167,21 +168,19 @@ public class GravityHand : MonoBehaviour
         {
             canGrapple = false;
             playerControl.enabled = true;
-        }
 
-        anim.SetTrigger("Pull");
+            anim.ResetTrigger("Pull");
+        }       
     }
 
-    private void RaycastInfo()
+    private void RaycastInfo() //Sends out raycast towards mouseposition
     {
         Ray ray = cam.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
 
-        if(Physics.Raycast(ray, out hit, grabDist))
+        if(Physics.Raycast(ray, out hit, grabDist)) //Check to see targeted object is within distant to be interacted with
         {
-            
-
-            if (hit.collider.CompareTag("GravInteract"))
+            if (hit.collider.CompareTag("GravInteract")) //Parents the currentObject to holdPos 
             {
                 currentObject = hit.collider.gameObject;
                 currentObject.transform.SetParent(holdPos);
@@ -194,23 +193,12 @@ public class GravityHand : MonoBehaviour
                 CalculateRotVector();
             }
 
-            if (hit.collider.CompareTag("GrapplePoint"))
+            if (hit.collider.CompareTag("GrapplePoint")) //Designates point to which player can grapple to & disables player control
             {
                 grappleLocation = hit.point;
                 canGrapple = true;
                 playerControl.enabled = false;
             }
         }
-
-
-        /*if(Physics.Raycast(ray, out hit, grappleDist))
-        {
-            if (hit.collider.CompareTag("GrapplePoint"))
-            {
-                grappleLocation = hit.point;
-                canGrapple = true;
-                playerControl.enabled = false;
-            }
-        }*/
     }
 }
