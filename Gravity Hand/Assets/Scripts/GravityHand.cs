@@ -117,9 +117,8 @@ public class GravityHand : MonoBehaviour
 
     private void PullToPlayer() //lerps object to holdPos
     {
-        currentObject.transform.position = Vector3.Lerp(currentObject.transform.position, holdPos.position, attractSpeed * Time.deltaTime);
-
         anim.SetTrigger("Pull");
+        currentObject.transform.position = Vector3.Lerp(currentObject.transform.position, holdPos.position, attractSpeed * Time.deltaTime);
     }
 
     private void DropObject() //removes object from parent & it's rigidbody constraints 
