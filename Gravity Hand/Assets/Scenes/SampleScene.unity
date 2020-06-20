@@ -308,7 +308,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxOutlineWidth: 0.2
-  outlineColor: {r: 1, g: 0.90825653, b: 0, a: 1}
+  outlineColor: {r: 1, g: 0, b: 0, a: 1}
 --- !u!1 &170076733
 GameObject:
   m_ObjectHideFlags: 0
@@ -530,7 +530,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxOutlineWidth: 0.2
-  outlineColor: {r: 1, g: 0.90825653, b: 0, a: 1}
+  outlineColor: {r: 1, g: 0, b: 0, a: 1}
 --- !u!1 &510651192
 GameObject:
   m_ObjectHideFlags: 0
@@ -564,8 +564,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1c4fe2f44ec21c43bf45c3943ec6ca8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxOutlineWidth: 0.3
-  outlineColor: {r: 1, g: 0.95786846, b: 0, a: 1}
+  maxOutlineWidth: 0.2
+  outlineColor: {r: 1, g: 0, b: 0, a: 1}
 --- !u!54 &510651194
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -788,8 +788,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1c4fe2f44ec21c43bf45c3943ec6ca8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxOutlineWidth: 0.3
-  outlineColor: {r: 1, g: 0.95786846, b: 0, a: 1}
+  maxOutlineWidth: 0.2
+  outlineColor: {r: 1, g: 0, b: 0, a: 1}
 --- !u!54 &540677065
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -968,8 +968,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1c4fe2f44ec21c43bf45c3943ec6ca8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxOutlineWidth: 0.3
-  outlineColor: {r: 1, g: 0.95786846, b: 0, a: 1}
+  maxOutlineWidth: 0.2
+  outlineColor: {r: 1, g: 0, b: 0, a: 1}
 --- !u!54 &630334918
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1191,8 +1191,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1c4fe2f44ec21c43bf45c3943ec6ca8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxOutlineWidth: 0.3
-  outlineColor: {r: 1, g: 0.95786846, b: 0, a: 1}
+  maxOutlineWidth: 0.2
+  outlineColor: {r: 1, g: 0, b: 0, a: 1}
 --- !u!54 &732623973
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1638,7 +1638,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxOutlineWidth: 0.2
-  outlineColor: {r: 1, g: 0.90825653, b: 0, a: 1}
+  outlineColor: {r: 1, g: 0, b: 0.009137154, a: 1}
 --- !u!1 &926691368
 GameObject:
   m_ObjectHideFlags: 0
@@ -1672,8 +1672,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1c4fe2f44ec21c43bf45c3943ec6ca8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxOutlineWidth: 0.3
-  outlineColor: {r: 1, g: 0.95786846, b: 0, a: 1}
+  maxOutlineWidth: 0.2
+  outlineColor: {r: 1, g: 0, b: 0, a: 1}
 --- !u!54 &926691370
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1795,8 +1795,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1c4fe2f44ec21c43bf45c3943ec6ca8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxOutlineWidth: 0.3
-  outlineColor: {r: 1, g: 0.95786846, b: 0, a: 1}
+  maxOutlineWidth: 0.2
+  outlineColor: {r: 1, g: 0, b: 0, a: 1}
 --- !u!54 &1058024725
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1918,8 +1918,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1c4fe2f44ec21c43bf45c3943ec6ca8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxOutlineWidth: 0.3
-  outlineColor: {r: 1, g: 0.95786846, b: 0, a: 1}
+  maxOutlineWidth: 0.2
+  outlineColor: {r: 1, g: 0, b: 0, a: 1}
 --- !u!54 &1102207813
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2041,8 +2041,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1c4fe2f44ec21c43bf45c3943ec6ca8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxOutlineWidth: 0.3
-  outlineColor: {r: 1, g: 0.95786846, b: 0, a: 1}
+  maxOutlineWidth: 0.2
+  outlineColor: {r: 1, g: 0, b: 0, a: 1}
 --- !u!54 &1225750451
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2753,8 +2753,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1c4fe2f44ec21c43bf45c3943ec6ca8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxOutlineWidth: 0.3
-  outlineColor: {r: 1, g: 0.95786846, b: 0, a: 1}
+  maxOutlineWidth: 0.2
+  outlineColor: {r: 1, g: 0, b: 0, a: 1}
 --- !u!1 &1687432812
 GameObject:
   m_ObjectHideFlags: 0
@@ -2818,8 +2818,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1c4fe2f44ec21c43bf45c3943ec6ca8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxOutlineWidth: 0.3
-  outlineColor: {r: 1, g: 0.95786846, b: 0, a: 1}
+  maxOutlineWidth: 0.2
+  outlineColor: {r: 1, g: 0, b: 0, a: 1}
 --- !u!54 &1909758973
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2941,8 +2941,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1c4fe2f44ec21c43bf45c3943ec6ca8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxOutlineWidth: 0.3
-  outlineColor: {r: 1, g: 0.95786846, b: 0, a: 1}
+  maxOutlineWidth: 0.2
+  outlineColor: {r: 1, g: 0, b: 0, a: 1}
 --- !u!54 &1920312089
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -3064,8 +3064,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1c4fe2f44ec21c43bf45c3943ec6ca8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxOutlineWidth: 0.3
-  outlineColor: {r: 1, g: 0.95786846, b: 0, a: 1}
+  maxOutlineWidth: 0.2
+  outlineColor: {r: 1, g: 0, b: 0, a: 1}
 --- !u!54 &1927282669
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -3187,8 +3187,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1c4fe2f44ec21c43bf45c3943ec6ca8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxOutlineWidth: 0.3
-  outlineColor: {r: 1, g: 0.95786846, b: 0, a: 1}
+  maxOutlineWidth: 0.2
+  outlineColor: {r: 1, g: 0, b: 0, a: 1}
 --- !u!54 &1936945506
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -3310,8 +3310,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1c4fe2f44ec21c43bf45c3943ec6ca8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxOutlineWidth: 0.3
-  outlineColor: {r: 1, g: 0.95786846, b: 0, a: 1}
+  maxOutlineWidth: 0.2
+  outlineColor: {r: 1, g: 0, b: 0, a: 1}
 --- !u!54 &2050253819
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -3439,8 +3439,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1c4fe2f44ec21c43bf45c3943ec6ca8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxOutlineWidth: 0.3
-  outlineColor: {r: 1, g: 0.95786846, b: 0, a: 1}
+  maxOutlineWidth: 0.2
+  outlineColor: {r: 1, g: 0, b: 0, a: 1}
 --- !u!54 &2094788323
 Rigidbody:
   m_ObjectHideFlags: 0
