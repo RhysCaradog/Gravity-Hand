@@ -10,7 +10,7 @@ public class GravityHand : MonoBehaviour
     public Animator anim;
 
     public float grabDist;
-    public float pushRadius;
+    public float pushDist;
 
     public Transform holdPos;
     public float attractSpeed;
@@ -30,6 +30,8 @@ public class GravityHand : MonoBehaviour
 
     private bool hasObject = false;
     private bool canGrapple = false;
+
+    LayerMask gravInteract;
 
 
     void Start()
@@ -142,19 +144,18 @@ public class GravityHand : MonoBehaviour
 
     private void PushObject() //Applies force in a forward vector to any correctly tagged object in a radius
     {
-        Collider[] colliders = Physics.OverlapSphere(transform.position, pushRadius);
+        Vector3 pushDir = cam.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, pushDist));
 
-        foreach (Collider gravObject in colliders)
+        Ray ray = cam.ScreenPointToRay(Input.mousePosition);
+        RaycastHit hit;
+        
+        if(Physics.Raycast(ray, out hit, pushDist))
         {
-            if(gravObject.CompareTag("GravInteract"))
+            if (hit.collider.CompareTag("GravInteract"))
             {
-                Rigidbody gravBody = gravObject.GetComponent<Rigidbody>();
-
-                //gravBody.AddExplosionForce(pushForce, Vector3.up, pushRadius);
-                gravBody.AddForce(transform.forward * pushForce);
+                hit.rigidbody.AddForce(pushDir, ForceMode.Impulse);
             }
         }
-
     }
 
     private void Grapple() //Lerps player from their current transform.position to designated grapple location
