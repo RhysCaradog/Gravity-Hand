@@ -6,12 +6,27 @@ public class Gun : MonoBehaviour
 {
     public Camera cam;
 
-    public float damage;
+    public float damage = 10f;
+    public float shotForce = 10f;
 
     public float range;
 
+    public GameObject crosshair;
+    public GameObject shotIcon;
+
+    public ParticleSystem gunShot;
+    public GameObject shotHit;
+
+    private void Start()
+    {
+        crosshair.SetActive(true);
+        shotIcon.SetActive(false);
+    }
+
     private void Update()
     {
+        SetCrosshair();
+
         if (Input.GetKeyDown(KeyCode.F))
         {
             Shoot();
@@ -20,6 +35,8 @@ public class Gun : MonoBehaviour
 
     private void Shoot()
     {
+        gunShot.Play();
+
         Ray ray = cam.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
 
@@ -33,6 +50,33 @@ public class Gun : MonoBehaviour
                 enemy.TakeDamage(damage);
             }
 
+
+            if(hit.rigidbody != null)
+            {
+                hit.rigidbody.AddForce(-hit.normal * shotForce);
+            }
+
+            Instantiate(shotHit, hit.point, Quaternion.LookRotation(hit.normal));
         }
+    }
+
+    void SetCrosshair()
+    {
+        Ray ray = cam.ScreenPointToRay(Input.mousePosition);
+        RaycastHit hit;
+
+        if (Physics.Raycast(ray, out hit, range))
+        {
+            if(hit.collider.CompareTag("Enemy"))
+            {
+                crosshair.SetActive(false);
+                shotIcon.SetActive(true);
+            }
+            else
+            {
+                crosshair.SetActive(true);
+                shotIcon.SetActive(false);
+            }
+        }     
     }
 }
