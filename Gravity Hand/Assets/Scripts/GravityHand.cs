@@ -72,7 +72,7 @@ public class GravityHand : MonoBehaviour
             anim.ResetTrigger("Pull");
 
             RotateObject();
-            if (CheckDist() >= 1f)
+            if (CheckDist() >= 1f) //If object parented to holdPos is not at holdPos lerp it towards the player
             {
                 PullToPlayer();
             }
@@ -82,7 +82,7 @@ public class GravityHand : MonoBehaviour
             anim.SetBool("Hold", false);
         }
 
-        if(canGrapple)
+        if(canGrapple) // If object being interacted can be grappled to call Grapple function
         {
             anim.SetBool("Grapple", true);
             Grapple();
@@ -157,13 +157,13 @@ public class GravityHand : MonoBehaviour
 
     }
 
-    private void Grapple() //Lerps player from their current transform.position to designated grapple location. Once close to grapple location lerp is disabled & player control is reactivated
+    private void Grapple() //Lerps player from their current transform.position to designated grapple location
     {
         transform.position = Vector3.Lerp(transform.position, grappleLocation, grappleSpeed * Time.deltaTime);
 
         float travelDist = Vector3.Distance(transform.position, grappleLocation);
 
-        if (travelDist <= 0.5f)
+        if (travelDist <= 0.5f) //Once close to grapple location Grapple function is cancelled disabled & player control is reactivated
         {
             canGrapple = false;
             playerControl.enabled = true;
