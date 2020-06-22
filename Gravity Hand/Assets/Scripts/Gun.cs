@@ -5,6 +5,7 @@ using UnityEngine;
 public class Gun : MonoBehaviour
 {
     public Camera cam;
+    private Animator anim;
 
     public float damage = 10f;
     public float shotForce = 10f;
@@ -19,6 +20,7 @@ public class Gun : MonoBehaviour
 
     private void Start()
     {
+        anim = GetComponent<Animator>();
         crosshair.SetActive(true);
         shotIcon.SetActive(false);
     }
@@ -29,6 +31,7 @@ public class Gun : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.F))
         {
+            anim.SetTrigger("Shoot");
             Shoot();
         }
     }
