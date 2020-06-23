@@ -7,6 +7,7 @@ TagManager:
   - GravInteract
   - GrapplePoint
   - Enemy
+  - Armour
   layers:
   - Default
   - TransparentFX

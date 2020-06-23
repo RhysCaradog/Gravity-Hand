@@ -31,9 +31,6 @@ public class GravityHand : MonoBehaviour
     private bool hasObject = false;
     private bool canGrapple = false;
 
-    LayerMask gravInteract;
-
-
     void Start()
     {
         throwForce = minThrowForce;
@@ -43,6 +40,9 @@ public class GravityHand : MonoBehaviour
 
     void Update()
     {
+        Vector3 handDir = cam.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, grabDist));
+        Debug.DrawRay(cam.transform.position, handDir, Color.green);
+
         if (Input.GetMouseButtonDown(0) && !hasObject)
         {
             RaycastInfo();
@@ -186,6 +186,20 @@ public class GravityHand : MonoBehaviour
                 currentObject.transform.SetParent(holdPos);
 
                 objectRb = currentObject.GetComponent<Rigidbody>();
+                objectRb.constraints = RigidbodyConstraints.FreezeAll;
+
+                hasObject = true;
+
+                CalculateRotVector();
+            }
+
+            if(hit.collider.CompareTag("Armour"))
+            {
+                currentObject = hit.collider.gameObject;
+                currentObject.transform.SetParent(holdPos);
+
+                objectRb = currentObject.GetComponent<Rigidbody>();
+                objectRb.isKinematic = false;
                 objectRb.constraints = RigidbodyConstraints.FreezeAll;
 
                 hasObject = true;

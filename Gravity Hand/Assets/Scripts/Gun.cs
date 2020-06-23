@@ -18,6 +18,8 @@ public class Gun : MonoBehaviour
     public ParticleSystem gunShot;
     public GameObject shotHit;
 
+    private Rigidbody objectRb;
+
     private void Start()
     {
         anim = GetComponent<Animator>();
@@ -27,6 +29,8 @@ public class Gun : MonoBehaviour
 
     private void Update()
     {
+        Vector3 rayLine = cam.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, range));
+        Debug.DrawRay(transform.position, rayLine, Color.red);
         SetCrosshair();
 
         if (Input.GetKeyDown(KeyCode.F))
@@ -53,6 +57,12 @@ public class Gun : MonoBehaviour
                 enemyHealth.TakeDamage(damage);
             }
 
+            if(hit.collider.CompareTag("Armour"))
+            {
+                objectRb = hit.collider.gameObject.GetComponent<Rigidbody>();
+                objectRb.isKinematic = false;
+            }
+
 
             if(hit.rigidbody != null)
             {
@@ -71,7 +81,7 @@ public class Gun : MonoBehaviour
 
         if (Physics.Raycast(ray, out hit, range))
         {
-            if(hit.collider.CompareTag("Enemy"))
+            if(hit.collider.CompareTag("Enemy") || hit.collider.CompareTag("Armour"))
             {
                 crosshair.SetActive(false);
                 shotIcon.SetActive(true);
