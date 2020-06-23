@@ -47,10 +47,10 @@ public class Gun : MonoBehaviour
         {
             Debug.Log(hit.transform.name);
 
-            Enemy enemy = hit.transform.GetComponent<Enemy>();
-            if(enemy != null)
+            EnemyHealth enemyHealth = hit.transform.GetComponent<EnemyHealth>();
+            if(enemyHealth != null)
             {
-                enemy.TakeDamage(damage);
+                enemyHealth.TakeDamage(damage);
             }
 
 
@@ -59,7 +59,8 @@ public class Gun : MonoBehaviour
                 hit.rigidbody.AddForce(-hit.normal * shotForce);
             }
 
-            Instantiate(shotHit, hit.point, Quaternion.LookRotation(hit.normal));
+            GameObject hitGO =Instantiate(shotHit, hit.point, Quaternion.LookRotation(hit.normal));
+            Destroy(hitGO, 1f);
         }
     }
 

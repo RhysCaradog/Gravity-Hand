@@ -10,22 +10,18 @@ public class PlayerController : MonoBehaviour
     public float gravity = -9.81f;
     public float jumpHeight = 3f;
 
-    public Transform groundCheck;
-    public float groundDistance;
-    public LayerMask groundMask;
-
-    Vector3 velocity;
     bool isGrounded;
+
+    private Vector3 velocity;
 
     void Update()
     {
-        //Checks if player is grounded
-        isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
+        isGrounded = controller.isGrounded;
         
         //Reset players velocity when grounded
         if(isGrounded && velocity.y <0)
         {
-            velocity.y = -2f;
+            velocity.y = 0f;
         }
 
         //Movement enabled on Input * speed value
