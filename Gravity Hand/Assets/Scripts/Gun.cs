@@ -38,8 +38,6 @@ public class Gun : MonoBehaviour
 
     private void Update()
     {
-        Vector3 rayLine = cam.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, range));
-        Debug.DrawRay(player.transform.position, rayLine, Color.red);
         SetCrosshair();
 
         if (Input.GetKeyDown(KeyCode.F))
@@ -53,7 +51,6 @@ public class Gun : MonoBehaviour
     {
         gunShot.Play();
 
-        //Ray ray = cam.ScreenPointToRay(Input.mousePosition);
         Ray ray = cam.ViewportPointToRay(new Vector3 (0.5f, 0.5f, 0));
         RaycastHit hit;
 

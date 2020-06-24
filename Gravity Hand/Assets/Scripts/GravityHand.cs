@@ -157,11 +157,10 @@ public class GravityHand : MonoBehaviour
         DropObject();
     }
 
-    private void PushObject() //Applies force in a forward vector to any correctly tagged object in the given direction
+    private void PushObject() //Applies force in direction of the mousePosition to any correctly tagged object in the given direction
     {
         Vector3 pushDir = cam.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, pushDist));
 
-        //Ray ray = cam.ScreenPointToRay(Input.mousePosition);
         Ray ray = cam.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
         RaycastHit hit;
         
@@ -189,9 +188,8 @@ public class GravityHand : MonoBehaviour
         }       
     }
 
-    private void RaycastInfo() //Sends out raycast towards mouseposition
-    {
-        //Ray ray = cam.ScreenPointToRay(Input.mousePosition);
+    private void RaycastInfo() //Sends out raycast towards cursor at centre of the screen
+    { 
         Ray ray = cam.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
         RaycastHit hit;
 
