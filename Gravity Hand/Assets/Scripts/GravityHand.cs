@@ -142,7 +142,7 @@ public class GravityHand : MonoBehaviour
         DropObject();
     }
 
-    private void PushObject() //Applies force in a forward vector to any correctly tagged object in a radius
+    private void PushObject() //Applies force in a forward vector to any correctly tagged object in the given direction
     {
         Vector3 pushDir = cam.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, pushDist));
 
@@ -153,7 +153,7 @@ public class GravityHand : MonoBehaviour
         {
             if (hit.collider.CompareTag("GravInteract"))
             {
-                hit.rigidbody.AddForce(pushDir, ForceMode.Impulse);
+                hit.rigidbody.AddForce(pushDir * pushForce, ForceMode.Impulse);
             }
         }
     }

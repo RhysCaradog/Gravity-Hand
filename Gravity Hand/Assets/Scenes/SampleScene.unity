@@ -2600,6 +2600,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxOutlineWidth: 0.2
   outlineColor: {r: 1, g: 0, b: 0, a: 1}
+--- !u!4 &1669315508 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2077205019234254010, guid: 05cddf3348acbea49932882af3d41e02,
+    type: 3}
+  m_PrefabInstance: {fileID: 2077205018970002316}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1909758971
 GameObject:
   m_ObjectHideFlags: 0
@@ -3556,6 +3562,16 @@ PrefabInstance:
         type: 3}
       propertyPath: range
       value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 2077205020211371549, guid: 05cddf3348acbea49932882af3d41e02,
+        type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1669315508}
+    - target: {fileID: 2077205019234254004, guid: 05cddf3348acbea49932882af3d41e02,
+        type: 3}
+      propertyPath: pushForce
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 05cddf3348acbea49932882af3d41e02, type: 3}

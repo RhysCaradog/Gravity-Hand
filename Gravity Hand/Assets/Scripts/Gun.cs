@@ -4,8 +4,12 @@ using UnityEngine;
 
 public class Gun : MonoBehaviour
 {
+    GameObject gun;
+
     public Camera cam;
     private Animator anim;
+
+    public Transform player;
 
     public float damage = 10f;
     public float shotForce = 10f;
@@ -20,17 +24,22 @@ public class Gun : MonoBehaviour
 
     private Rigidbody objectRb;
 
+    Vector3 cursor;
+
+
     private void Start()
     {
         anim = GetComponent<Animator>();
         crosshair.SetActive(true);
         shotIcon.SetActive(false);
+
+        gun = gameObject;
     }
 
     private void Update()
     {
         Vector3 rayLine = cam.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, range));
-        Debug.DrawRay(transform.position, rayLine, Color.red);
+        Debug.DrawRay(player.transform.position, rayLine, Color.red);
         SetCrosshair();
 
         if (Input.GetKeyDown(KeyCode.F))
@@ -44,12 +53,15 @@ public class Gun : MonoBehaviour
     {
         gunShot.Play();
 
-        Ray ray = cam.ScreenPointToRay(Input.mousePosition);
+        //Ray ray = cam.ScreenPointToRay(Input.mousePosition);
+        Ray ray = cam.ViewportPointToRay(new Vector3 (0.5f, 0.5f, 0));
         RaycastHit hit;
 
         if (Physics.Raycast(ray, out hit, range))
         {
             Debug.Log(hit.transform.name);
+
+            cursor = hit.point;
 
             EnemyHealth enemyHealth = hit.transform.GetComponent<EnemyHealth>();
             if(enemyHealth != null)
@@ -72,11 +84,18 @@ public class Gun : MonoBehaviour
             GameObject hitGO =Instantiate(shotHit, hit.point, Quaternion.LookRotation(hit.normal));
             Destroy(hitGO, 1f);
         }
+
+        else
+        {
+            cursor = ray.GetPoint(range);
+        }
+
+        gun.transform.LookAt(hit.point);
     }
 
     void SetCrosshair()
     {
-        Ray ray = cam.ScreenPointToRay(Input.mousePosition);
+        Ray ray = cam.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
         RaycastHit hit;
 
         if (Physics.Raycast(ray, out hit, range))
