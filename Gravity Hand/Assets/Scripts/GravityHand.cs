@@ -4,10 +4,14 @@ using UnityEngine;
 
 public class GravityHand : MonoBehaviour
 {
+    GameObject hand;
+
     public PlayerController playerControl;
 
+    public Transform player;
+
     public Camera cam;
-    public Animator anim;
+    private Animator anim;
 
     public float grabDist;
     public float pushDist;
@@ -27,6 +31,7 @@ public class GravityHand : MonoBehaviour
 
     private Vector3 rotateVector = Vector3.one;
     private Vector3 grappleLocation;
+    Vector3 cursorPos;
 
     private bool hasObject = false;
     private bool canGrapple = false;
@@ -35,13 +40,23 @@ public class GravityHand : MonoBehaviour
     {
         throwForce = minThrowForce;
 
-        anim = GetComponentInChildren<Animator>();
+        anim = GetComponent<Animator>();
+
+        hand = gameObject;
     }
 
     void Update()
     {
-        Vector3 handDir = cam.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, grabDist));
-        Debug.DrawRay(cam.transform.position, handDir, Color.green);
+        Ray ray = cam.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
+        RaycastHit hit;
+
+        if(Physics.Raycast(ray, out hit, grabDist))
+        {
+            Vector3 handDir = cam.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, grabDist));
+            Debug.DrawRay(player.transform.position, handDir, Color.green);
+            Debug.Log(hit.collider.name);
+            Debug.Log(canGrapple);
+        }
 
         if (Input.GetMouseButtonDown(0) && !hasObject)
         {
@@ -146,7 +161,8 @@ public class GravityHand : MonoBehaviour
     {
         Vector3 pushDir = cam.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, pushDist));
 
-        Ray ray = cam.ScreenPointToRay(Input.mousePosition);
+        //Ray ray = cam.ScreenPointToRay(Input.mousePosition);
+        Ray ray = cam.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
         RaycastHit hit;
         
         if(Physics.Raycast(ray, out hit, pushDist))
@@ -160,9 +176,9 @@ public class GravityHand : MonoBehaviour
 
     private void Grapple() //Lerps player from their current transform.position to designated grapple location
     {
-        transform.position = Vector3.Lerp(transform.position, grappleLocation, grappleSpeed * Time.deltaTime);
+        player.transform.position = Vector3.Lerp(player.transform.position, grappleLocation, grappleSpeed * Time.deltaTime);
 
-        float travelDist = Vector3.Distance(transform.position, grappleLocation);
+        float travelDist = Vector3.Distance(player.transform.position, grappleLocation);
 
         if (travelDist <= 0.5f) //Once close to grapple location Grapple function is cancelled disabled & player control is reactivated
         {
@@ -175,11 +191,14 @@ public class GravityHand : MonoBehaviour
 
     private void RaycastInfo() //Sends out raycast towards mouseposition
     {
-        Ray ray = cam.ScreenPointToRay(Input.mousePosition);
+        //Ray ray = cam.ScreenPointToRay(Input.mousePosition);
+        Ray ray = cam.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
         RaycastHit hit;
 
-        if(Physics.Raycast(ray, out hit, grabDist)) //Check to see targeted object is within distant to be interacted with
+        if (Physics.Raycast(ray, out hit, grabDist)) //Check to see targeted object is within distant to be interacted with
         {
+            cursorPos = hit.point;
+
             if (hit.collider.CompareTag("GravInteract")) //Parents the currentObject to holdPos 
             {
                 currentObject = hit.collider.gameObject;
@@ -193,7 +212,7 @@ public class GravityHand : MonoBehaviour
                 CalculateRotVector();
             }
 
-            if(hit.collider.CompareTag("Armour"))
+            if (hit.collider.CompareTag("Armour"))
             {
                 currentObject = hit.collider.gameObject;
                 currentObject.transform.SetParent(holdPos);
@@ -214,5 +233,7 @@ public class GravityHand : MonoBehaviour
                 playerControl.enabled = false;
             }
         }
+
+        hand.transform.LookAt(hit.point);
     }
 }

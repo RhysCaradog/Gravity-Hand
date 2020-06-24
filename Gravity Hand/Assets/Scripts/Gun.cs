@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Gun : MonoBehaviour
 {
-    GameObject gun;
+    private GameObject gun;
 
     public Camera cam;
     private Animator anim;
@@ -24,7 +24,7 @@ public class Gun : MonoBehaviour
 
     private Rigidbody objectRb;
 
-    Vector3 cursor;
+    private Vector3 cursorPos;
 
 
     private void Start()
@@ -61,7 +61,7 @@ public class Gun : MonoBehaviour
         {
             Debug.Log(hit.transform.name);
 
-            cursor = hit.point;
+            cursorPos = hit.point;
 
             EnemyHealth enemyHealth = hit.transform.GetComponent<EnemyHealth>();
             if(enemyHealth != null)
@@ -87,7 +87,7 @@ public class Gun : MonoBehaviour
 
         else
         {
-            cursor = ray.GetPoint(range);
+            cursorPos = ray.GetPoint(range);
         }
 
         gun.transform.LookAt(hit.point);
