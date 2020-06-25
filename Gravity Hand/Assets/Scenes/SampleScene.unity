@@ -1197,6 +1197,7 @@ MonoBehaviour:
   minThrowForce: 20
   maxThrowForce: 50
   pushForce: 1
+  pushDamage: 5
 --- !u!1 &732623971
 GameObject:
   m_ObjectHideFlags: 0
@@ -3641,5 +3642,6 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 0.1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2077205019234254004, guid: 05cddf3348acbea49932882af3d41e02, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 05cddf3348acbea49932882af3d41e02, type: 3}

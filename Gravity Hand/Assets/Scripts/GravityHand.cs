@@ -25,6 +25,7 @@ public class GravityHand : MonoBehaviour
     float throwForce;
 
     public float pushForce;
+    public float pushDamage;
 
     private GameObject currentObject;
     private Rigidbody objectRb;
@@ -166,9 +167,15 @@ public class GravityHand : MonoBehaviour
         
         if(Physics.Raycast(ray, out hit, pushDist))
         {
-            if (hit.collider.CompareTag("GravInteract"))
+            if (hit.rigidbody != null)
             {
                 hit.rigidbody.AddForce(pushDir * pushForce, ForceMode.Impulse);
+            }
+
+            EnemyHealth enemyHealth = hit.transform.GetComponent<EnemyHealth>();
+            if (enemyHealth != null)
+            {
+                enemyHealth.TakeDamage(pushDamage);
             }
         }
     }

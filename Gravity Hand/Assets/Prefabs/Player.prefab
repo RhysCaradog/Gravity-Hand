@@ -4942,7 +4942,6 @@ GameObject:
   - component: {fileID: 2077205019234254010}
   - component: {fileID: 2077205019234254009}
   - component: {fileID: 2077205019234254011}
-  - component: {fileID: 2077205019234254004}
   - component: {fileID: 2077205019234254006}
   m_Layer: 0
   m_Name: Player
@@ -5000,29 +4999,6 @@ MonoBehaviour:
   speed: 10
   gravity: -9.81
   jumpHeight: 1
---- !u!114 &2077205019234254004
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2077205019234254008}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ea3dfadd19ba23c4495c1258fa2d0804, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerControl: {fileID: 2077205019234254011}
-  cam: {fileID: 2077205018922187228}
-  anim: {fileID: 0}
-  grabDist: 50
-  pushDist: 20
-  holdPos: {fileID: 2077205020654812641}
-  attractSpeed: 5
-  grappleSpeed: 2
-  minThrowForce: 20
-  maxThrowForce: 50
-  pushForce: 50
 --- !u!114 &2077205019234254006
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5056,6 +5032,30 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &6907422893337049851
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2077205019499528807}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea3dfadd19ba23c4495c1258fa2d0804, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerControl: {fileID: 2077205019234254011}
+  player: {fileID: 0}
+  cam: {fileID: 2077205018922187228}
+  grabDist: 50
+  pushDist: 20
+  holdPos: {fileID: 2077205020654812641}
+  attractSpeed: 5
+  grappleSpeed: 2
+  minThrowForce: 20
+  maxThrowForce: 50
+  pushForce: 50
+  pushDamage: 5
 --- !u!1 &2077205019599033716
 GameObject:
   m_ObjectHideFlags: 0
@@ -5262,6 +5262,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cam: {fileID: 2077205018922187228}
+  player: {fileID: 0}
   damage: 10
   shotForce: 200
   range: 50
@@ -5360,15 +5361,15 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 440ac80632c44e04699398e5b072d57f, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4ac2fe9af7722de4ba665de0b474473c, type: 3}
---- !u!4 &2077205019499306567 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 400000, guid: 4ac2fe9af7722de4ba665de0b474473c,
-    type: 3}
-  m_PrefabInstance: {fileID: 2077205019499431111}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2077205019499528807 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100000, guid: 4ac2fe9af7722de4ba665de0b474473c,
+    type: 3}
+  m_PrefabInstance: {fileID: 2077205019499431111}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &2077205019499306567 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 400000, guid: 4ac2fe9af7722de4ba665de0b474473c,
     type: 3}
   m_PrefabInstance: {fileID: 2077205019499431111}
   m_PrefabAsset: {fileID: 0}
