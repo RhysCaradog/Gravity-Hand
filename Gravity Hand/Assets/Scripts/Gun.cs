@@ -68,6 +68,7 @@ public class Gun : MonoBehaviour
 
             if(hit.collider.CompareTag("Armour"))
             {
+                hit.collider.gameObject.transform.SetParent(null);
                 objectRb = hit.collider.gameObject.GetComponent<Rigidbody>();
                 objectRb.isKinematic = false;
             }
