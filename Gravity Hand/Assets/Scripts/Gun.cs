@@ -11,7 +11,7 @@ public class Gun : MonoBehaviour
 
     public Transform player;
 
-    public float damage = 10f;
+    public float damage;
     public float shotForce = 10f;
 
     public float range;

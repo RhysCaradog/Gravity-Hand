@@ -58,7 +58,7 @@ Transform:
   m_GameObject: {fileID: 1524536332784824639}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children: []
   m_Father: {fileID: 4777814772081276908}
   m_RootOrder: 0
@@ -256,9 +256,9 @@ ParticleSystem:
       maxColor: {r: 1, g: 0.9013662, b: 0, a: 1}
       maxGradient:
         serializedVersion: 2
-        key0: {r: 1, g: 0.93737537, b: 0, a: 0.60784316}
+        key0: {r: 0.9811321, g: 0.96922636, b: 0.7913849, a: 0.60784316}
         key1: {r: 1, g: 0.9912135, b: 0.8820755, a: 1}
-        key2: {r: 1, g: 0.90825653, b: 0, a: 0.60784316}
+        key2: {r: 0.9811321, g: 0.9606782, b: 0.754361, a: 0.60784316}
         key3: {r: 0, g: 0, b: 0, a: 0}
         key4: {r: 0, g: 0, b: 0, a: 0}
         key5: {r: 0, g: 0, b: 0, a: 0}
@@ -4743,7 +4743,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10308, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 83405d4a0a7dad046ac6e9db9698e594, type: 2}
   - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0

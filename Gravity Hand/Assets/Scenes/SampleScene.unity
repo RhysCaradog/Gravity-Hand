@@ -3185,7 +3185,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6cfaf8dcf226a064e91f296ed6f932b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 50
+  health: 100
+  healthBar: {fileID: 0}
+  player: {fileID: 1669315508}
 --- !u!136 &2008875503
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -3622,6 +3624,11 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 1669315508}
+    - target: {fileID: 2077205020211371549, guid: 05cddf3348acbea49932882af3d41e02,
+        type: 3}
+      propertyPath: damage
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 2077205019234254004, guid: 05cddf3348acbea49932882af3d41e02,
         type: 3}
       propertyPath: pushForce
