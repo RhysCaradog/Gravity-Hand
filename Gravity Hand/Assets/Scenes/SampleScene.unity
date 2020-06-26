@@ -5074,6 +5074,7 @@ GameObject:
   - component: {fileID: 174015636}
   - component: {fileID: 174015635}
   - component: {fileID: 174015638}
+  - component: {fileID: 174015639}
   m_Layer: 0
   m_Name: L Shoulderpad
   m_TagString: Armour
@@ -5106,7 +5107,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 2, z: 1}
+  m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &174015636
 MeshRenderer:
@@ -5125,7 +5126,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 9d386778d7ef6cb4883e18e6e0e739e9, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -5169,6 +5170,20 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &174015639
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 174015633}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1c4fe2f44ec21c43bf45c3943ec6ca8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxOutlineWidth: 0.1
+  outlineColor: {r: 1, g: 0, b: 0, a: 1}
 --- !u!1 &328102022
 GameObject:
   m_ObjectHideFlags: 0
@@ -5353,6 +5368,7 @@ GameObject:
   - component: {fileID: 467757441}
   - component: {fileID: 467757440}
   - component: {fileID: 467757443}
+  - component: {fileID: 467757444}
   m_Layer: 0
   m_Name: R Shoulderpad
   m_TagString: Armour
@@ -5385,7 +5401,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 2, z: 1}
+  m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &467757441
 MeshRenderer:
@@ -5404,7 +5420,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 9d386778d7ef6cb4883e18e6e0e739e9, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -5448,6 +5464,20 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &467757444
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 467757438}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1c4fe2f44ec21c43bf45c3943ec6ca8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxOutlineWidth: 0.1
+  outlineColor: {r: 1, g: 0, b: 0, a: 1}
 --- !u!1 &510651192
 GameObject:
   m_ObjectHideFlags: 0
@@ -5830,6 +5860,7 @@ GameObject:
   - component: {fileID: 686606233}
   - component: {fileID: 686606232}
   - component: {fileID: 686606235}
+  - component: {fileID: 686606236}
   m_Layer: 0
   m_Name: Helmet
   m_TagString: Armour
@@ -5862,7 +5893,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.0000001, y: 3, z: 1.0000002}
+  m_Size: {x: 1.0000001, y: 2, z: 1.0000002}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &686606233
 MeshRenderer:
@@ -5881,7 +5912,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 9d386778d7ef6cb4883e18e6e0e739e9, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -5925,6 +5956,20 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &686606236
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 686606230}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1c4fe2f44ec21c43bf45c3943ec6ca8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxOutlineWidth: 0.1
+  outlineColor: {r: 1, g: 0, b: 0, a: 1}
 --- !u!4 &690008145 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2077205019499306567, guid: 05cddf3348acbea49932882af3d41e02,
@@ -6068,7 +6113,7 @@ GameObject:
   - component: {fileID: 736753970}
   - component: {fileID: 736753974}
   m_Layer: 10
-  m_Name: Cube (16)
+  m_Name: Grapple Point
   m_TagString: GrapplePoint
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

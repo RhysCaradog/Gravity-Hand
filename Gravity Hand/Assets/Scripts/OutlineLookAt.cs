@@ -27,19 +27,7 @@ public class OutlineLookAt : MonoBehaviour
         {
             cursorPos = hit.point;
 
-            if(hit.collider.CompareTag("GravInteract"))
-            {
-                currentOC = hit.collider.GetComponent<OutlineController>();
-
-                if (prevOC != currentOC)
-                {
-                    HideOutline();
-                    ShowOutline();
-                }
-
-                prevOC = currentOC;
-            }
-            else if (hit.collider.CompareTag("GrapplePoint") || hit.collider.CompareTag("GrapplePoint"))
+            if(hit.collider.CompareTag("GravInteract") || hit.collider.CompareTag("GrapplePoint") || hit.collider.CompareTag("Armour"))
             {
                 currentOC = hit.collider.GetComponent<OutlineController>();
 
