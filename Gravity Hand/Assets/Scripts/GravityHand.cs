@@ -34,6 +34,8 @@ public class GravityHand : MonoBehaviour
     private Vector3 grappleLocation;
     Vector3 cursorPos;
 
+    public ParticleSystem pushVFX;
+
     private bool hasObject = false;
     private bool canGrapple = false;
 
@@ -50,6 +52,7 @@ public class GravityHand : MonoBehaviour
 
     void Update()
     {
+
         if (Input.GetMouseButtonDown(1) && !hasObject)
         {
             RaycastInfo();
@@ -151,6 +154,8 @@ public class GravityHand : MonoBehaviour
 
     private void PushObject() //Applies force in direction of the mousePosition to any correctly tagged object in the given direction
     {
+        pushVFX.Play();
+
         Vector3 pushDir = cam.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, pushDist));
 
         Ray ray = cam.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
