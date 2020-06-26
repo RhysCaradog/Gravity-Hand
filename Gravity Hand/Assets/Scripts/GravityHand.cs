@@ -50,32 +50,21 @@ public class GravityHand : MonoBehaviour
 
     void Update()
     {
-        Ray ray = cam.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
-        RaycastHit hit;
-
-        if(Physics.Raycast(ray, out hit, grabDist))
-        {
-            Vector3 handDir = cam.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, grabDist));
-            Debug.DrawRay(player.transform.position, handDir, Color.green);
-            Debug.Log(hit.collider.name);
-            Debug.Log(canGrapple);
-        }
-
-        if (Input.GetMouseButtonDown(0) && !hasObject)
+        if (Input.GetMouseButtonDown(1) && !hasObject)
         {
             RaycastInfo();
         }
 
-        if (Input.GetMouseButton(1)) //If button is held down increase throw force until it reaches maxThrowForce
+        if (Input.GetMouseButton(2)) //If button is held down increase throw force until it reaches maxThrowForce
         {
             throwForce += 0.1f;
         }
 
-        if (Input.GetMouseButtonUp(1) && hasObject)
+        if (Input.GetMouseButtonUp(2) && hasObject)
         {
             ThrowObject();
         }
-        else if(Input.GetMouseButtonUp(1) && !hasObject)
+        else if(Input.GetMouseButtonUp(2) && !hasObject)
         {
             PushObject();
             anim.SetTrigger("Push");

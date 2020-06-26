@@ -40,7 +40,7 @@ public class Gun : MonoBehaviour
     {
         SetCrosshair();
 
-        if (Input.GetKeyDown(KeyCode.F))
+        if (Input.GetMouseButtonDown(0))
         {
             anim.SetTrigger("Shoot");
             Shoot();
