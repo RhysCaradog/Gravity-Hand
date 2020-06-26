@@ -8,7 +8,7 @@ public class GravityHand : MonoBehaviour
 
     public PlayerController playerControl;
 
-    public Transform player;
+    Transform player;
 
     public Camera cam;
     private Animator anim;
@@ -44,6 +44,8 @@ public class GravityHand : MonoBehaviour
         anim = GetComponent<Animator>();
 
         hand = gameObject;
+
+        player = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
     void Update()
@@ -238,7 +240,6 @@ public class GravityHand : MonoBehaviour
                 playerControl.enabled = false;
             }
         }
-
         hand.transform.LookAt(hit.point);
     }
 }

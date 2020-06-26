@@ -10,6 +10,8 @@ public class OutlineLookAt : MonoBehaviour
     private OutlineController currentOC;
     private OutlineController prevOC;
 
+    private Vector3 cursorPos;
+
 
     private void Update()
     {
@@ -18,11 +20,13 @@ public class OutlineLookAt : MonoBehaviour
 
     private void LookAtRay()
     {
-        Ray ray = cam.ScreenPointToRay(Input.mousePosition);
+        Ray ray = cam.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
         RaycastHit hit;
 
         if(Physics.Raycast(ray, out hit, dist))
         {
+            cursorPos = hit.point;
+
             if(hit.collider.CompareTag("GravInteract"))
             {
                 currentOC = hit.collider.GetComponent<OutlineController>();
