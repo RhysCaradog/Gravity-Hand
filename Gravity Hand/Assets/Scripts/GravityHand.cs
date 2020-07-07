@@ -36,6 +36,8 @@ public class GravityHand : MonoBehaviour
 
     public ParticleSystem pushVFX;
 
+    LineRenderer lr;
+
     private bool hasObject = false;
     private bool canGrapple = false;
 
@@ -48,6 +50,8 @@ public class GravityHand : MonoBehaviour
         hand = gameObject;
 
         player = GameObject.FindGameObjectWithTag("Player").transform;
+
+        lr = GetComponent<LineRenderer>();
     }
 
     void Update()
@@ -86,6 +90,7 @@ public class GravityHand : MonoBehaviour
             RotateObject();
             if (CheckDist() >= 1f) //If object parented to holdPos is not at holdPos lerp it towards the player
             {
+                ShowPullEffect();
                 PullToPlayer();
             }
         }
@@ -97,6 +102,7 @@ public class GravityHand : MonoBehaviour
         if(canGrapple) // If object being interacted can be grappled to call Grapple function
         {
             anim.SetBool("Grapple", true);
+            ShowPullEffect();
             Grapple();
         }
     }
@@ -231,9 +237,28 @@ public class GravityHand : MonoBehaviour
             {
                 grappleLocation = hit.point;
                 canGrapple = true;
-                playerControl.enabled = false;
+                playerControl.enabled = false;                
             }
         }
         hand.transform.LookAt(hit.point);
+    }
+
+    void ShowPullEffect()
+    {
+        /*if (!canGrapple || !hasObject)
+            return;*/
+
+        if (hasObject == true)
+        {
+            lr.enabled = true;
+            lr.SetPosition(0, hand.transform.position);
+            lr.SetPosition(1, currentObject.transform.position);
+        }
+        else if (canGrapple)
+        {
+            lr.enabled = true;
+            lr.SetPosition(0, hand.transform.position);
+            lr.SetPosition(1, grappleLocation);
+        }
     }
 }
