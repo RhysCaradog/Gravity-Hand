@@ -14472,7 +14472,7 @@ Transform:
   m_GameObject: {fileID: 2077205019234254008}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.75, y: 0.75, z: 0.75}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2077205018922187229}
   m_Father: {fileID: 0}
@@ -14490,7 +14490,7 @@ CharacterController:
   m_Enabled: 1
   serializedVersion: 2
   m_Height: 2
-  m_Radius: 0.75
+  m_Radius: 0.5
   m_SlopeLimit: 45
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
@@ -14526,49 +14526,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cam: {fileID: 2077205018922187228}
   dist: 50
---- !u!95 &2077205019975870466
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2077205019499528807}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 5dcb85564ba1f0042a49db45b8bf827a, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &6907422893337049851
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2077205019499528807}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ea3dfadd19ba23c4495c1258fa2d0804, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerControl: {fileID: 2077205019234254011}
-  cam: {fileID: 2077205018922187228}
-  grabDist: 50
-  pushDist: 20
-  holdPos: {fileID: 2077205020654812641}
-  attractSpeed: 5
-  grappleSpeed: 2
-  minThrowForce: 20
-  maxThrowForce: 50
-  pushForce: 1
-  pushDamage: 5
-  pushVFX: {fileID: 72804451}
 --- !u!120 &1110389872
 LineRenderer:
   m_ObjectHideFlags: 0
@@ -14673,6 +14630,49 @@ LineRenderer:
     generateLightingData: 0
   m_UseWorldSpace: 1
   m_Loop: 0
+--- !u!95 &2077205019975870466
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2077205019499528807}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 5dcb85564ba1f0042a49db45b8bf827a, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &6907422893337049851
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2077205019499528807}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea3dfadd19ba23c4495c1258fa2d0804, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerControl: {fileID: 2077205019234254011}
+  cam: {fileID: 2077205018922187228}
+  grabDist: 50
+  pushDist: 20
+  holdPos: {fileID: 2077205020654812641}
+  attractSpeed: 5
+  grappleSpeed: 2
+  minThrowForce: 20
+  maxThrowForce: 50
+  pushForce: 1
+  pushDamage: 5
+  pushVFX: {fileID: 72804451}
 --- !u!1 &2077205019599033716
 GameObject:
   m_ObjectHideFlags: 0
