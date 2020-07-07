@@ -9,6 +9,8 @@ public class EnemyController : MonoBehaviour
     private int destPoint = 0;
     private NavMeshAgent agent;
 
+    public bool randomPoints = false;
+
 
     void Start()
     {
@@ -37,12 +39,34 @@ public class EnemyController : MonoBehaviour
         destPoint = (destPoint + 1) % points.Length;
     }
 
+    void RandomisePatrol()
+    {
+        // Returns if no points have been set up
+        if (points.Length == 0)
+            return;
+
+        // Set the agent to go to the currently selected destination
+        agent.destination = points[destPoint].position;
+
+        //Randomises the point which agent patrols to
+        destPoint = Random.Range(0, 8);
+    }
 
     void Update()
     {
         // Choose the next destination point when the agent gets
-        // close to the current one.
+        // close to the current one
         if (!agent.pathPending && agent.remainingDistance < 0.5f)
-            GotoNextPoint();
+        {
+            if(randomPoints == true)
+            {
+                RandomisePatrol();
+            }
+            else
+            {
+                GotoNextPoint();
+            }
+        }
+            
     }
 }
