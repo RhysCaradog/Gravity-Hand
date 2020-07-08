@@ -66,7 +66,6 @@ public class EnemyController : MonoBehaviour
             {
                 GotoNextPoint();
             }
-        }
-            
+        }          
     }
 }
