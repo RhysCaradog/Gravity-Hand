@@ -14887,6 +14887,8 @@ MonoBehaviour:
   shotIcon: {fileID: 2077205019080695373}
   gunShot: {fileID: 2077205019058489789}
   shotHit: {fileID: 1083048952099692972, guid: 21e13eb447956214a8ac0bedcea623e9, type: 3}
+  bloodSplat: {fileID: 1083048952099692972, guid: 8012981141d33ad429bac67b3e3165d5,
+    type: 3}
 --- !u!1 &2077205020654812640
 GameObject:
   m_ObjectHideFlags: 0

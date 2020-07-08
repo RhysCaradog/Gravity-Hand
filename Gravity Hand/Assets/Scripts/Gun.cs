@@ -21,6 +21,7 @@ public class Gun : MonoBehaviour
 
     public ParticleSystem gunShot;
     public GameObject shotHit;
+    public GameObject bloodSplat;
 
     private Rigidbody objectRb;
 
@@ -79,8 +80,17 @@ public class Gun : MonoBehaviour
                 hit.rigidbody.AddForce(-hit.normal * shotForce);
             }
 
-            GameObject hitGO =Instantiate(shotHit, hit.point, Quaternion.LookRotation(hit.normal));
-            Destroy(hitGO, 1f);
+            if(hit.collider.CompareTag("Enemy"))
+            {
+                Instantiate(bloodSplat, hit.point, Quaternion.LookRotation(hit.normal));
+                Destroy(bloodSplat, 1f);
+            }
+
+            else
+            {
+                GameObject hitGO = Instantiate(shotHit, hit.point, Quaternion.LookRotation(hit.normal));
+                Destroy(hitGO, 1f);
+            }
         }
 
         else
