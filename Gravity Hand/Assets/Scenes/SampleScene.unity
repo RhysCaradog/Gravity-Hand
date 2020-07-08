@@ -1162,7 +1162,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxOutlineWidth: 0.3
-  outlineColor: {r: 0.9752312, g: 1, b: 0, a: 0.78431374}
+  outlineColor: {r: 0.10502291, g: 0, b: 1, a: 1}
 --- !u!1 &818532308
 GameObject:
   m_ObjectHideFlags: 0
