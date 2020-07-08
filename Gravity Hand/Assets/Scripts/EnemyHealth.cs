@@ -34,6 +34,12 @@ public class EnemyHealth : MonoBehaviour
 
     void Die()
     {
+        foreach (Transform child in transform)
+        {
+            child.parent = null;
+            child.GetComponent<Rigidbody>().isKinematic = false;
+        }
+
         Destroy(gameObject);
     }
 }
