@@ -4,5 +4,8 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/Museum Blockout.unity
+    guid: 592aaaf17aa6d2545b3ba33ebf3cd116
   m_configObjects: {}
