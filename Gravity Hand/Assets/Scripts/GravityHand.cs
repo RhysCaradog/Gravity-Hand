@@ -38,6 +38,11 @@ public class GravityHand : MonoBehaviour
 
     LineRenderer lr;
 
+    public Light lt;
+    Color pushColour = Color.red;
+    Color pullColour = Color.blue;
+    Color holdColour = Color.yellow;
+
     private bool hasObject = false;
     private bool canGrapple = false;
 
@@ -52,6 +57,8 @@ public class GravityHand : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player").transform;
 
         lr = GetComponent<LineRenderer>();
+
+        lt = GetComponentInChildren<Light>();
     }
 
     void Update()
@@ -76,7 +83,7 @@ public class GravityHand : MonoBehaviour
             PushObject();
             anim.SetTrigger("Push");
         }
-
+   
         if (Input.GetKeyDown(KeyCode.G) && hasObject)
         {
             DropObject();
@@ -87,7 +94,12 @@ public class GravityHand : MonoBehaviour
             anim.SetBool("Hold", true);
             anim.ResetTrigger("Pull");
 
+            lt.color = holdColour;
+
+            lr.enabled = false;
+
             RotateObject();
+
             if (CheckDist() >= 1f) //If object parented to holdPos is not at holdPos lerp it towards the player
             {
                 ShowPullEffect();
@@ -97,6 +109,10 @@ public class GravityHand : MonoBehaviour
         else
         {
             anim.SetBool("Hold", false);
+
+            lr.enabled = false;
+
+            lt.color = Color.clear;
         }
 
         if(canGrapple) // If object being interacted can be grappled to call Grapple function
@@ -136,6 +152,7 @@ public class GravityHand : MonoBehaviour
     private void PullToPlayer() //lerps object to holdPos
     {
         anim.SetTrigger("Pull");
+
         currentObject.transform.position = Vector3.Lerp(currentObject.transform.position, holdPos.position, attractSpeed * Time.deltaTime);
     }
 
@@ -160,7 +177,7 @@ public class GravityHand : MonoBehaviour
 
     private void PushObject() //Applies force in direction of the mousePosition to any correctly tagged object in the given direction
     {
-        pushVFX.Play();
+        //pushVFX.Play();
 
         Vector3 pushDir = cam.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, pushDist));
 
@@ -245,8 +262,7 @@ public class GravityHand : MonoBehaviour
 
     void ShowPullEffect()
     {
-        /*if (!canGrapple || !hasObject)
-            return;*/
+        lt.color = pullColour;
 
         if (hasObject == true)
         {
