@@ -14670,7 +14670,8 @@ MonoBehaviour:
   grappleSpeed: 2
   minThrowForce: 20
   maxThrowForce: 50
-  pushForce: 1
+  minPushForce: 0.25
+  maxPushForce: 1
   pushDamage: 5
   pushVFX: {fileID: 72804451}
   lt: {fileID: 2596087285451865028}
