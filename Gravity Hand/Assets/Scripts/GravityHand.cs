@@ -63,6 +63,7 @@ public class GravityHand : MonoBehaviour
 
     void Update()
     {
+        Debug.Log(lt.color);
 
         if (Input.GetMouseButtonDown(1) && !hasObject)
         {
@@ -172,12 +173,16 @@ public class GravityHand : MonoBehaviour
 
         anim.SetTrigger("Throw");
 
+        Debug.Log("GLOW RED!!!");
+
         DropObject();
     }
 
     private void PushObject() //Applies force in direction of the mousePosition to any correctly tagged object in the given direction
     {
-        //pushVFX.Play();
+        pushVFX.Play();
+
+        Debug.Log("GLOW RED!!!");
 
         Vector3 pushDir = cam.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, pushDist));
 
