@@ -8,6 +8,7 @@ TagManager:
   - GrapplePoint
   - Enemy
   - Armour
+  - Knife
   layers:
   - Default
   - TransparentFX
