@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Knife : MonoBehaviour
 {
+    private GameObject knife;
+
     public Camera cam;
 
     Rigidbody rb;
@@ -11,20 +13,33 @@ public class Knife : MonoBehaviour
     public float throwForce;
 
     Animator anim;
-    
+
+    public Transform weaponPos;
 
     bool thrown;
+
+    private Vector3 knifeDir;
+
+    public float range = 2f;
 
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         anim = GetComponent<Animator>();
+
+        knife = gameObject;
+
+        knife.transform.position = weaponPos.position;
+
+        knifeDir = cam.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y));
     }
 
     // Update is called once per frame
     void Update()
     {
+        knife.transform.LookAt(knifeDir);
+
         if (Input.GetMouseButtonDown(0))
         {
             anim.SetTrigger("Stab");
@@ -32,37 +47,44 @@ public class Knife : MonoBehaviour
 
         if (Input.GetMouseButtonDown(1))
         {
-            //anim.SetTrigger("Throw");
+            /*thrown = true;
+            anim.SetTrigger("Throw");*/
             ThrowKnife();
         }
-        else
-            thrown = false;
+
+        if (thrown)
+        {
+            ThrowKnife();
+        }
     }
 
     void Stab()
     {
-
+       
     }
 
     void ThrowKnife()
     {
-        rb.AddForce(cam.transform.forward * throwForce, ForceMode.Impulse);
+        rb.isKinematic = false;
+        knife.transform.parent = null;
+        rb.AddForce(transform.forward * throwForce, ForceMode.Impulse);
         
-        thrown = true;
+        thrown = false;
     }
 
-    private void OnCollisionEnter(Collision col)
+    void OnCollisionEnter(Collision col)
     {
-        EnemyHealth enemyHealth = col.collider.GetComponent<EnemyHealth>();
+            EnemyHealth enemyHealth = col.collider.GetComponent<EnemyHealth>();
 
-        if (enemyHealth != null)
-        {
-            enemyHealth.TakeDamage(2);
-        }
+            if (enemyHealth != null)
+            {
+                enemyHealth.TakeDamage(5);
+            }
 
-        if (col.collider && thrown)
-        {
-            rb.isKinematic = true;
+            if (col.collider && thrown)
+            {
+                rb.isKinematic = true;
+            }
         }
     }
-}
+
