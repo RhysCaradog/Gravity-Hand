@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Knife : MonoBehaviour
 {
-    private GameObject knife;
+    public GameObject knife;
 
     public Camera cam;
 
@@ -21,10 +21,8 @@ public class Knife : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        rb = GetComponent<Rigidbody>();
+        rb = GetComponentInChildren<Rigidbody>();
         anim = GetComponent<Animator>();
-
-        knife = gameObject;
 
         hasKnife = true;
     }
@@ -47,10 +45,12 @@ public class Knife : MonoBehaviour
         }      
     }
 
-    void ThrowKnife()
+    public void ThrowKnife()
     {
+        anim.enabled = false;
         knife.transform.parent = null;
-        rb.AddForce(knife.transform.forward * throwForce, ForceMode.Impulse);
+        rb.isKinematic = false;
+        rb.AddForce(cam.transform.forward * throwForce, ForceMode.Impulse);
 
         hasKnife = false;
     }
