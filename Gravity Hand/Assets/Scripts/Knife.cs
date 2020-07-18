@@ -32,8 +32,11 @@ public class Knife : MonoBehaviour
 
         if (Input.GetMouseButtonDown(1))
         {
-            anim.SetTrigger("Throw");
+            //anim.SetTrigger("Throw");
+            ThrowKnife();
         }
+        else
+            thrown = false;
     }
 
     void Stab()
@@ -44,8 +47,22 @@ public class Knife : MonoBehaviour
     void ThrowKnife()
     {
         rb.AddForce(cam.transform.forward * throwForce, ForceMode.Impulse);
-        rb.isKinematic = false;
-
+        
         thrown = true;
+    }
+
+    private void OnCollisionEnter(Collision col)
+    {
+        EnemyHealth enemyHealth = col.collider.GetComponent<EnemyHealth>();
+
+        if (enemyHealth != null)
+        {
+            enemyHealth.TakeDamage(2);
+        }
+
+        if (col.collider && thrown)
+        {
+            rb.isKinematic = true;
+        }
     }
 }
