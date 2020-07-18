@@ -16,11 +16,7 @@ public class Knife : MonoBehaviour
 
     public Transform weaponPos;
 
-    bool thrown;
-
-    private Vector3 knifeDir;
-
-    public float range = 2f;
+    bool hasKnife;
 
     // Start is called before the first frame update
     void Start()
@@ -30,46 +26,33 @@ public class Knife : MonoBehaviour
 
         knife = gameObject;
 
-        knife.transform.position = weaponPos.position;
-
-        knifeDir = cam.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y));
+        hasKnife = true;
     }
 
     // Update is called once per frame
     void Update()
     {
-        knife.transform.LookAt(knifeDir);
 
-        if (Input.GetMouseButtonDown(0))
+        if (hasKnife)
         {
-            anim.SetTrigger("Stab");
-        }
+            if (Input.GetMouseButtonDown(0))
+            {
+                anim.SetTrigger("Stab");
+            }
 
-        if (Input.GetMouseButtonDown(1))
-        {
-            /*thrown = true;
-            anim.SetTrigger("Throw");*/
-            ThrowKnife();
-        }
-
-        if (thrown)
-        {
-            ThrowKnife();
-        }
-    }
-
-    void Stab()
-    {
-       
+            if (Input.GetMouseButtonDown(1) && hasKnife)
+            {
+                anim.SetTrigger("Throw");
+            }
+        }      
     }
 
     void ThrowKnife()
     {
-        rb.isKinematic = false;
         knife.transform.parent = null;
-        rb.AddForce(transform.forward * throwForce, ForceMode.Impulse);
-        
-        thrown = false;
+        rb.AddForce(knife.transform.forward * throwForce, ForceMode.Impulse);
+
+        hasKnife = false;
     }
 
     void OnCollisionEnter(Collision col)
@@ -81,7 +64,7 @@ public class Knife : MonoBehaviour
                 enemyHealth.TakeDamage(5);
             }
 
-            if (col.collider && thrown)
+            if (col.collider && hasKnife)
             {
                 rb.isKinematic = true;
             }
