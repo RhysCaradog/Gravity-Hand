@@ -6,7 +6,7 @@ public class Knife : MonoBehaviour
 {
     Rigidbody rb;
 
-    bool thrown = false;
+    public bool thrown;
 
     void Start()
     {
@@ -25,7 +25,7 @@ public class Knife : MonoBehaviour
 
     private void OnCollisionEnter(Collision col)
     {
-        if(col.other && thrown)
+        if(col.collider && thrown)
         {
             rb.isKinematic = true;
         }

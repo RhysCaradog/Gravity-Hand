@@ -25,6 +25,8 @@ public class KnifeController : MonoBehaviour
         anim = GetComponent<Animator>();
 
         hasKnife = true;
+
+        Knife k = knife.GetComponent<Knife>();
     }
 
     // Update is called once per frame
@@ -46,7 +48,9 @@ public class KnifeController : MonoBehaviour
 
         if(!hasKnife)
         {
+            Knife k = knife.GetComponent<Knife>();
 
+            k.thrown = true;
         }
 
 
@@ -60,5 +64,10 @@ public class KnifeController : MonoBehaviour
         rb.AddForce(cam.transform.forward * throwForce, ForceMode.Impulse);
 
         hasKnife = false;
+    }
+
+    void RecallKnife()
+    {
+        //Return knife to KnifePos, k.thrown = false, hasKnife = true, rb.isKinematic = true, set rotation.
     }
 }
