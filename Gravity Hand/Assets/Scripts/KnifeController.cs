@@ -16,7 +16,7 @@ public class KnifeController : MonoBehaviour
 
     Animator anim;
 
-    Transform weaponPos;
+    Transform knifePos;
 
     bool hasKnife;
 
@@ -25,7 +25,7 @@ public class KnifeController : MonoBehaviour
     {
         rb = knife.GetComponent<Rigidbody>();
         anim = GetComponent<Animator>();
-        weaponPos = gameObject.transform;
+        knifePos = gameObject.transform;
 
         k = knife.GetComponent<Knife>();
 
@@ -35,7 +35,7 @@ public class KnifeController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log("Knife Pos: " + weaponPos.position);
+        Debug.Log("Knife Pos: " + knifePos.position);
 
         if (hasKnife)
         {
@@ -79,8 +79,8 @@ public class KnifeController : MonoBehaviour
     void RecallKnife()
     {
         //Return knife to KnifePos, k.thrown = false, hasKnife = true, rb.isKinematic = true, set rotation.
-        knife.transform.parent = weaponPos;
-        knife.transform.position = Vector3.Lerp(knife.transform.position, weaponPos.position, throwForce * Time.deltaTime);
+        knife.transform.parent = knifePos;
+        knife.transform.position = Vector3.Lerp(knife.transform.position, knifePos.position, throwForce * Time.deltaTime);
         hasKnife = true;
     }
 }
