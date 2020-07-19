@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Knife : MonoBehaviour
 {
+    GameObject knife;
+
     Rigidbody rb;
 
     public bool thrown;
@@ -25,7 +27,7 @@ public class Knife : MonoBehaviour
 
     private void OnCollisionEnter(Collision col)
     {
-        if(col.collider && thrown)
+        if (col.collider && thrown)
         {
             rb.isKinematic = true;
         }
