@@ -5,6 +5,7 @@ using UnityEngine;
 public class KnifeController : MonoBehaviour
 {
     OutlineController OC;
+    public GravityHand GH;
 
     public GameObject knife;
 
@@ -81,11 +82,6 @@ public class KnifeController : MonoBehaviour
             OC.enabled = false;
 
             anim.enabled = false;
-
-            if (Input.GetMouseButtonDown(1))
-            {
-                    RecallKnife();
-             }
         }
     }
 

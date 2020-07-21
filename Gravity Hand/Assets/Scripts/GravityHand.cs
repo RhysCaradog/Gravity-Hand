@@ -46,6 +46,7 @@ public class GravityHand : MonoBehaviour
 
     private bool hasObject = false;
     private bool canGrapple = false;
+    public bool seeKnife = false;
 
     void Start()
     {
@@ -265,6 +266,7 @@ public class GravityHand : MonoBehaviour
 
             if(hit.collider.CompareTag("Knife"))
             {
+                Debug.Log("It's a Knife!");
                 knifeControl.RecallKnife();
             }
         }

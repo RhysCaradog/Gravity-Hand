@@ -778,6 +778,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 2077205018970002316}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &431452664 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3287090072844473072, guid: 05cddf3348acbea49932882af3d41e02,
+    type: 3}
+  m_PrefabInstance: {fileID: 2077205018970002316}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aba28a37f82601444a599732bc41f7da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &510651192
 GameObject:
   m_ObjectHideFlags: 0
@@ -3843,6 +3855,11 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6907422893337049851, guid: 05cddf3348acbea49932882af3d41e02,
+        type: 3}
+      propertyPath: knifeControl
+      value: 
+      objectReference: {fileID: 431452664}
     - target: {fileID: 1843928092659786069, guid: 05cddf3348acbea49932882af3d41e02,
         type: 3}
       propertyPath: m_TagString
