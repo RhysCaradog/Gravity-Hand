@@ -66,8 +66,10 @@ public class GravityHand : MonoBehaviour
     void Update()
     {
         Debug.Log(lt.color);
+        var d = Input.GetAxis("Mouse ScrollWheel");
 
-        if (Input.GetMouseButtonDown(1) && !hasObject)
+        //if (Input.GetMouseButtonDown(1) && !hasObject)
+        if (d < 0f  && !hasObject)
         {
             RaycastInfo();
         }
@@ -77,11 +79,11 @@ public class GravityHand : MonoBehaviour
             throwForce += 0.1f;
         }
 
-        if (Input.GetMouseButtonUp(2) && hasObject)
+        if (d > 0f && hasObject)
         {
             ThrowObject();
         }
-        else if(Input.GetMouseButtonUp(2) && !hasObject)
+        else if(d > 0f && !hasObject)
         {
             PushObject();
             anim.SetTrigger("Push");

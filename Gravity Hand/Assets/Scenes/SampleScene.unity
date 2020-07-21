@@ -3860,6 +3860,11 @@ PrefabInstance:
       propertyPath: knifeControl
       value: 
       objectReference: {fileID: 431452664}
+    - target: {fileID: 6907422893337049851, guid: 05cddf3348acbea49932882af3d41e02,
+        type: 3}
+      propertyPath: pushForce
+      value: 0.25
+      objectReference: {fileID: 0}
     - target: {fileID: 1843928092659786069, guid: 05cddf3348acbea49932882af3d41e02,
         type: 3}
       propertyPath: m_TagString
