@@ -7,6 +7,7 @@ public class GravityHand : MonoBehaviour
     GameObject hand;
 
     public PlayerController playerControl;
+    public KnifeController knifeControl;
 
     Transform player;
 
@@ -260,6 +261,11 @@ public class GravityHand : MonoBehaviour
                 grappleLocation = hit.point;
                 canGrapple = true;
                 playerControl.enabled = false;                
+            }
+
+            if(hit.collider.CompareTag("Knife"))
+            {
+                knifeControl.RecallKnife();
             }
         }
         hand.transform.LookAt(hit.point);

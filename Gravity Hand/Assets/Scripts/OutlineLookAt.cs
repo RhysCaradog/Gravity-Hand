@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class OutlineLookAt : MonoBehaviour
 {
+    private string[] tags = new string[] { "GravInteract", "GrapplePoint", "Armour", "Knife" };
+
     public Camera cam;
     public float dist;
 
@@ -27,7 +29,7 @@ public class OutlineLookAt : MonoBehaviour
         {
             cursorPos = hit.point;
 
-            if(hit.collider.CompareTag("GravInteract") || hit.collider.CompareTag("GrapplePoint") || hit.collider.CompareTag("Armour"))
+            if(hit.collider.CompareTag("GravInteract") || hit.collider.CompareTag("GrapplePoint") || hit.collider.CompareTag("Armour") || hit.collider.CompareTag("Knife"))          
             {
                 currentOC = hit.collider.GetComponent<OutlineController>();
 

@@ -4,35 +4,32 @@ using UnityEngine;
 
 public class KnifeController : MonoBehaviour
 {
-    public GameObject knife;
+    OutlineController OC;
 
-    Knife k;
+    public GameObject knife;
 
     public Camera cam;
 
     Rigidbody rb;
 
-    public float throwForce;
-
     Animator anim;
 
     public Transform knifePar;
-    //Vector3 knifePos;
-    //Quaternion knifeRot;
 
+    public float throwForce;
+    const float minButtonHold = 0.25f;
+    float buttonHeldTime = 0f;
+
+    bool buttonHeld = false;
     bool hasKnife;
 
     // Start is called before the first frame update
     void Start()
     {
+        OC = knife.GetComponent<OutlineController>();
+
         rb = knife.GetComponent<Rigidbody>();
         anim = GetComponent<Animator>();
-
-        //knifePar = gameObject.transform;
-        //knifePos = gameObject.transform.position;
-        //knifeRot = gameObject.transform.localRotation;
-
-        k = knife.GetComponent<Knife>();
 
         hasKnife = true;
     }
@@ -40,36 +37,56 @@ public class KnifeController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log("Knife Pos: " + knifePar);
-
         if (hasKnife)
         {
+            OC.enabled = true;
+
             anim.enabled = true;
             rb.isKinematic = true;
 
             if (Input.GetMouseButtonDown(0))
             {
-                anim.SetTrigger("Stab");
+                buttonHeldTime = Time.timeSinceLevelLoad;
+                buttonHeld = false;
+            }
+            else if (Input.GetMouseButtonUp(0))
+            {
+                if (!buttonHeld)
+                {
+                    anim.SetTrigger("Stab");
+                }
+                else if(buttonHeld)
+                {
+                    anim.SetTrigger("Throw");
+                }
+                buttonHeld = false;
             }
 
-            if (Input.GetMouseButtonDown(1))
+            if (Input.GetMouseButton(0))
+            {
+                if (Time.timeSinceLevelLoad - buttonHeldTime > minButtonHold)
+                {
+                    buttonHeld = true;
+                }                        
+            }
+
+            /*if(Input.GetMouseButtonDown(1))
             {
                 anim.SetTrigger("Throw");
-            }
+            }*/
         }
 
         if(!hasKnife)
         {
+            OC.enabled = false;
+
             anim.enabled = false;
-            k.thrown = true;
 
             if (Input.GetMouseButtonDown(1))
             {
                     RecallKnife();
              }
         }
-
-
     }
 
     public void ThrowKnife()
@@ -81,7 +98,7 @@ public class KnifeController : MonoBehaviour
         hasKnife = false;
     }
 
-    void RecallKnife()
+    public void RecallKnife()
     {
         knife.transform.parent = knifePar;
         knife.transform.position = knifePar.position;
