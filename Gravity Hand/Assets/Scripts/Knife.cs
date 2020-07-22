@@ -15,13 +15,13 @@ public class Knife : MonoBehaviour
     {
         EnemyHealth enemyHealth = other.GetComponent<EnemyHealth>();
 
-        if (enemyHealth != null)//Damage Enemy
+        if (enemyHealth != null)
         {
             enemyHealth.TakeDamage(5);
         }
     }
 
-    private void OnCollisionEnter(Collision col)//Make knife stick to collision object
+    private void OnCollisionEnter(Collision col)
     {
         if (col.collider)
         {

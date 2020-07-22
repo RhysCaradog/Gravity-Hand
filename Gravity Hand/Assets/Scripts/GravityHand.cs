@@ -103,7 +103,7 @@ public class GravityHand : MonoBehaviour
 
             RotateObject();
 
-            if (CheckDist() >= 1f) //If object parented to holdPos is not at holdPos lerp it towards the holdPos.
+            if (CheckDist() >= 1f) //If object parented to holdPos is not at holdPos lerp it towards the player
             {
                 ShowPullEffect();
                 PullToPlayer();
@@ -230,7 +230,7 @@ public class GravityHand : MonoBehaviour
         {
             cursorPos = hit.point;
 
-            if (hit.collider.CompareTag("GravInteract")) //Parents the currentObject to holdPos.
+            if (hit.collider.CompareTag("GravInteract")) //Parents the currentObject to holdPos 
             {
                 currentObject = hit.collider.gameObject;
                 currentObject.transform.SetParent(holdPos);
@@ -243,7 +243,7 @@ public class GravityHand : MonoBehaviour
                 CalculateRotVector();
             }
 
-            if (hit.collider.CompareTag("Armour")) //Parents "Armour" component to holdPos;
+            if (hit.collider.CompareTag("Armour"))
             {
                 currentObject = hit.collider.gameObject;
                 currentObject.transform.SetParent(holdPos);
@@ -273,7 +273,7 @@ public class GravityHand : MonoBehaviour
         hand.transform.LookAt(hit.point);
     }
 
-    void ShowPullEffect()//Enable Line Renderer between target & Gravity Hand.
+    void ShowPullEffect()
     {
         lt.color = pullColour;
 
