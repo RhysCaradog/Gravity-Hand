@@ -19,7 +19,7 @@ public class Knife : MonoBehaviour
 
         if (enemyHealth != null)//Damages Enemy
         {
-            enemyHealth.TakeDamage(5);
+            enemyHealth.TakeDamage(50);
         }
     }
 
