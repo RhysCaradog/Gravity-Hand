@@ -15,16 +15,17 @@ public class Knife : MonoBehaviour
     {
         EnemyHealth enemyHealth = other.GetComponent<EnemyHealth>();
 
-        if (enemyHealth != null)
+        if (enemyHealth != null)//Damages Enemy
         {
             enemyHealth.TakeDamage(5);
         }
     }
 
-    private void OnCollisionEnter(Collision col)
+    private void OnCollisionEnter(Collision col)//Sticks knife in object that it collides with when thrown
     {
         if (col.collider)
         {
+            gameObject.transform.SetParent(col.collider.transform);
             rb.isKinematic = true;
         }
     }

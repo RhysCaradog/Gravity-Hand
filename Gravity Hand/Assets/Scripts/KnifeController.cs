@@ -40,23 +40,21 @@ public class KnifeController : MonoBehaviour
     {
         if (hasKnife)
         {
-            OC.enabled = true;
-
             anim.enabled = true;
             rb.isKinematic = true;
 
-            if (Input.GetMouseButtonDown(0))
+            if (Input.GetMouseButtonDown(0))//Button is pressed down. Need to check o see if it is "held".
             {
                 buttonHeldTime = Time.timeSinceLevelLoad;
                 buttonHeld = false;
             }
             else if (Input.GetMouseButtonUp(0))
             {
-                if (!buttonHeld)
+                if (!buttonHeld)//If button is released without being held.
                 {
                     anim.SetTrigger("Stab");
                 }
-                else if(buttonHeld)
+                else if(buttonHeld)//If button released after being held.
                 {
                     anim.SetTrigger("Throw");
                 }
@@ -65,27 +63,20 @@ public class KnifeController : MonoBehaviour
 
             if (Input.GetMouseButton(0))
             {
-                if (Time.timeSinceLevelLoad - buttonHeldTime > minButtonHold)
+                if (Time.timeSinceLevelLoad - buttonHeldTime > minButtonHold)//Button is considered "held" if it is actually held down.
                 {
                     buttonHeld = true;
                 }                        
             }
-
-            /*if(Input.GetMouseButtonDown(1))
-            {
-                anim.SetTrigger("Throw");
-            }*/
         }
 
-        if(!hasKnife)
+        if(!hasKnife)//Disable animator to ensure ThrowKnife() can function.
         {
-            OC.enabled = false;
-
             anim.enabled = false;
         }
     }
 
-    public void ThrowKnife()
+    public void ThrowKnife()//Throws knife forward
     {
         knife.transform.parent = null;
         rb.isKinematic = false;
@@ -94,7 +85,7 @@ public class KnifeController : MonoBehaviour
         hasKnife = false;
     }
 
-    public void RecallKnife()
+    public void RecallKnife()//Lerps knife from current position to KnifePos & resets rotation.
     {
         knife.transform.parent = knifePar;
         knife.transform.position = knifePar.position;
