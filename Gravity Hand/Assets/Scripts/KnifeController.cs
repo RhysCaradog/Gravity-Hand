@@ -4,9 +4,6 @@ using UnityEngine;
 
 public class KnifeController : MonoBehaviour
 {
-    OutlineController OC;
-    public GravityHand GH;
-
     public GameObject knife;
 
     public Camera cam;
@@ -27,12 +24,8 @@ public class KnifeController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        OC = knife.GetComponent<OutlineController>();
-
         rb = knife.GetComponent<Rigidbody>();
         anim = GetComponent<Animator>();
-
-        hasKnife = true;
     }
 
     // Update is called once per frame
@@ -40,52 +33,43 @@ public class KnifeController : MonoBehaviour
     {
         if (hasKnife)
         {
-            OC.enabled = true;
-
             anim.enabled = true;
             rb.isKinematic = true;
 
-            if (Input.GetMouseButtonDown(0))
+            if (Input.GetMouseButtonDown(0))//Button is pressed. We then check to see if it is being held.
             {
                 buttonHeldTime = Time.timeSinceLevelLoad;
                 buttonHeld = false;
             }
             else if (Input.GetMouseButtonUp(0))
             {
-                if (!buttonHeld)
+                if (!buttonHeld)//If button is released without being held, Stab.
                 {
                     anim.SetTrigger("Stab");
                 }
-                else if(buttonHeld)
+                else if(buttonHeld)//If button is released after being held, Throw.
                 {
                     anim.SetTrigger("Throw");
                 }
                 buttonHeld = false;
             }
 
-            if (Input.GetMouseButton(0))
+            if (Input.GetMouseButton(0))//Determines that button is being held.
             {
                 if (Time.timeSinceLevelLoad - buttonHeldTime > minButtonHold)
                 {
                     buttonHeld = true;
                 }                        
             }
-
-            /*if(Input.GetMouseButtonDown(1))
-            {
-                anim.SetTrigger("Throw");
-            }*/
         }
 
-        if(!hasKnife)
+        if(!hasKnife)//Disable animator so that ThrowKnife() can operate. 
         {
-            OC.enabled = false;
-
             anim.enabled = false;
         }
     }
 
-    public void ThrowKnife()
+    public void ThrowKnife()//Removes knife from player possession & throws it in a forward direction
     {
         knife.transform.parent = null;
         rb.isKinematic = false;
@@ -94,7 +78,7 @@ public class KnifeController : MonoBehaviour
         hasKnife = false;
     }
 
-    public void RecallKnife()
+    public void RecallKnife()//Lerps knife from it's current position back to KnifePos & re childs it.
     {
         knife.transform.parent = knifePar;
         knife.transform.position = knifePar.position;
