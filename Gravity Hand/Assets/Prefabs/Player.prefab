@@ -9613,7 +9613,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a77d446080ff9864d8bd2cc27d2f0e34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  thrown: 0
 --- !u!1 &2077205018922187202
 GameObject:
   m_ObjectHideFlags: 0
@@ -14763,6 +14762,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerControl: {fileID: 2077205019234254011}
+  knifeControl: {fileID: 0}
   cam: {fileID: 2077205018922187228}
   grabDist: 50
   pushDist: 20
@@ -14771,9 +14771,10 @@ MonoBehaviour:
   grappleSpeed: 2
   minThrowForce: 20
   maxThrowForce: 50
-  pushForce: 0
+  pushForce: 0.5
   pushDamage: 5
   pushVFX: {fileID: 72804451}
+  knife: {fileID: 1843928092659786069}
   lt: {fileID: 2596087285451865028}
 --- !u!1 &2077205019599033716
 GameObject:
@@ -15085,8 +15086,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aba28a37f82601444a599732bc41f7da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  GH: {fileID: 0}
   knife: {fileID: 1843928092659786069}
   cam: {fileID: 2077205018922187228}
+  knifePar: {fileID: 0}
   throwForce: 25
 --- !u!1 &3554761942742933677
 GameObject:

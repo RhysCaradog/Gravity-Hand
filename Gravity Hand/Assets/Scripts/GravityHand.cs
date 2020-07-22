@@ -39,6 +39,8 @@ public class GravityHand : MonoBehaviour
 
     LineRenderer lr;
 
+    public GameObject knife;
+
     public Light lt;
     Color pushColour = Color.red;
     Color pullColour = Color.blue;
@@ -46,7 +48,6 @@ public class GravityHand : MonoBehaviour
 
     private bool hasObject = false;
     private bool canGrapple = false;
-    public bool seeKnife = false;
 
     void Start()
     {
@@ -67,8 +68,7 @@ public class GravityHand : MonoBehaviour
     {
         Debug.Log(lt.color);
         var d = Input.GetAxis("Mouse ScrollWheel");
-
-        //if (Input.GetMouseButtonDown(1) && !hasObject)
+        
         if (d < 0f  && !hasObject)
         {
             RaycastInfo();
@@ -81,7 +81,7 @@ public class GravityHand : MonoBehaviour
 
         if (d > 0f && hasObject)
         {
-            ThrowObject();
+                ThrowObject();         
         }
         else if(d > 0f && !hasObject)
         {
@@ -171,7 +171,7 @@ public class GravityHand : MonoBehaviour
 
     private void ThrowObject() //Throws object in forward vector & drops object
     {
-        throwForce = Mathf.Clamp(throwForce, minThrowForce, maxThrowForce);
+        //throwForce = Mathf.Clamp(throwForce, minThrowForce, maxThrowForce);
         objectRb.AddForce(cam.transform.forward * throwForce, ForceMode.Impulse);
         throwForce = minThrowForce;
 
@@ -184,7 +184,7 @@ public class GravityHand : MonoBehaviour
 
     private void PushObject() //Applies force in direction of the mousePosition to any correctly tagged object in the given direction
     {
-        pushVFX.Play();
+        //pushVFX.Play();
 
         Debug.Log("GLOW RED!!!");
 
@@ -266,7 +266,7 @@ public class GravityHand : MonoBehaviour
                 playerControl.enabled = false;                
             }
 
-            if(hit.collider.CompareTag("Knife"))
+            if (hit.collider.CompareTag("Knife"))
             {
                 Debug.Log("It's a Knife!");
                 knifeControl.RecallKnife();
