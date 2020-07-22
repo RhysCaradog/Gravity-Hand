@@ -14776,7 +14776,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerControl: {fileID: 2077205019234254011}
-  knifeControl: {fileID: 0}
+  knifeControl: {fileID: 3287090072844473072}
   cam: {fileID: 2077205018922187228}
   grabDist: 50
   pushDist: 20
@@ -15102,7 +15102,7 @@ MonoBehaviour:
   GH: {fileID: 0}
   knife: {fileID: 1843928092659786069}
   cam: {fileID: 2077205018922187228}
-  knifePar: {fileID: 0}
+  knifePar: {fileID: 7674470402258190622}
   throwForce: 25
 --- !u!1 &3554761942742933677
 GameObject:

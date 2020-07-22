@@ -6,6 +6,8 @@ public class Knife : MonoBehaviour
 {
     Rigidbody rb;
 
+    public bool thrown;
+
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -23,7 +25,7 @@ public class Knife : MonoBehaviour
 
     private void OnCollisionEnter(Collision col)//Sticks knife in object that it collides with when thrown
     {
-        if (col.collider)
+        if (col.collider && thrown)
         {
             gameObject.transform.SetParent(col.collider.transform);
             rb.isKinematic = true;

@@ -4,10 +4,8 @@ using UnityEngine;
 
 public class KnifeController : MonoBehaviour
 {
-    OutlineController OC;
-    public GravityHand GH;
-
     public GameObject knife;
+    Knife k;
 
     public Camera cam;
 
@@ -27,7 +25,7 @@ public class KnifeController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        OC = knife.GetComponent<OutlineController>();
+        k = knife.GetComponent<Knife>();
 
         rb = knife.GetComponent<Rigidbody>();
         anim = GetComponent<Animator>();
@@ -42,6 +40,7 @@ public class KnifeController : MonoBehaviour
         {
             anim.enabled = true;
             rb.isKinematic = true;
+            k.thrown = false;
 
             if (Input.GetMouseButtonDown(0))//Button is pressed down. Need to check o see if it is "held".
             {
@@ -73,6 +72,7 @@ public class KnifeController : MonoBehaviour
         if(!hasKnife)//Disable animator to ensure ThrowKnife() can function.
         {
             anim.enabled = false;
+            k.thrown = true;
         }
     }
 
