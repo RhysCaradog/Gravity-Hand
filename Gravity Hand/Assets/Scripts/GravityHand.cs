@@ -39,8 +39,6 @@ public class GravityHand : MonoBehaviour
 
     LineRenderer lr;
 
-    public GameObject knife;
-
     public Light lt;
     Color pushColour = Color.red;
     Color pullColour = Color.blue;
