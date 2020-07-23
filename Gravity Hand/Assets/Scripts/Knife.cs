@@ -27,7 +27,7 @@ public class Knife : MonoBehaviour
     {
         if (col.collider && thrown)
         {
-            gameObject.transform.SetParent(col.collider.transform);
+            transform.SetParent(col.collider.transform);
             rb.isKinematic = true;
         }
     }
