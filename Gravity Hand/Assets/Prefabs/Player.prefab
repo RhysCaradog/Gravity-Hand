@@ -9599,8 +9599,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.1, y: 0.25, z: 0.2}
-  m_Center: {x: 0, y: -0.25, z: 0}
+  m_Size: {x: 0.25, y: 0.25, z: 0.25}
+  m_Center: {x: 0, y: -0.2, z: 0}
 --- !u!114 &555697541045595927
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9613,6 +9613,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a77d446080ff9864d8bd2cc27d2f0e34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  thrown: 0
 --- !u!114 &5573298479642318530
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15099,7 +15100,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aba28a37f82601444a599732bc41f7da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GH: {fileID: 0}
   knife: {fileID: 1843928092659786069}
   cam: {fileID: 2077205018922187228}
   knifePar: {fileID: 7674470402258190622}
