@@ -2308,7 +2308,7 @@ PrefabInstance:
     - target: {fileID: 904950448004150748, guid: 30d8463cf9f277c44816de7cbc7a52db,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.6
+      value: 1.25
       objectReference: {fileID: 0}
     - target: {fileID: 904950448004150748, guid: 30d8463cf9f277c44816de7cbc7a52db,
         type: 3}
@@ -3884,6 +3884,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 1843928092659786069, guid: 05cddf3348acbea49932882af3d41e02,
+        type: 3}
+      propertyPath: m_TagString
+      value: Knife
+      objectReference: {fileID: 0}
+    - target: {fileID: 3287090072844473072, guid: 05cddf3348acbea49932882af3d41e02,
+        type: 3}
+      propertyPath: knifePar
+      value: 
+      objectReference: {fileID: 431452663}
+    - target: {fileID: 3287090072844473072, guid: 05cddf3348acbea49932882af3d41e02,
+        type: 3}
+      propertyPath: range
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 2077205019234254010, guid: 05cddf3348acbea49932882af3d41e02,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3944,16 +3959,6 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3287090072844473072, guid: 05cddf3348acbea49932882af3d41e02,
-        type: 3}
-      propertyPath: knifePar
-      value: 
-      objectReference: {fileID: 431452663}
-    - target: {fileID: 3287090072844473072, guid: 05cddf3348acbea49932882af3d41e02,
-        type: 3}
-      propertyPath: range
-      value: 20
-      objectReference: {fileID: 0}
     - target: {fileID: 6907422893337049851, guid: 05cddf3348acbea49932882af3d41e02,
         type: 3}
       propertyPath: knifeControl
@@ -3963,11 +3968,6 @@ PrefabInstance:
         type: 3}
       propertyPath: pushForce
       value: 0.25
-      objectReference: {fileID: 0}
-    - target: {fileID: 1843928092659786069, guid: 05cddf3348acbea49932882af3d41e02,
-        type: 3}
-      propertyPath: m_TagString
-      value: Knife
       objectReference: {fileID: 0}
     - target: {fileID: 1843928092661989269, guid: 05cddf3348acbea49932882af3d41e02,
         type: 3}
